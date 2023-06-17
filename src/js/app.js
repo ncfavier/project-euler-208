@@ -3,7 +3,7 @@ import {Robot} from './robot.js'
 
 $(document).ready(() => {
 
-    var [WIDTH, HEIGHT] = [$(window).width(), $(window).height() - $(".top-bar").outerHeight()];
+    const [WIDTH, HEIGHT] = [$(window).width(), $(window).height() - $(".top-bar").outerHeight()];
 
     $("#canvas").width(WIDTH);
     $("#canvas").height(HEIGHT);
@@ -12,7 +12,7 @@ $(document).ready(() => {
 
     paper.setup($("#canvas").get(0));
 
-    var cs = new CoordinateSystem(WIDTH, HEIGHT);
+    let cs = new CoordinateSystem(WIDTH, HEIGHT);
     cs.autoSetFromWidth(50);
     cs.calculateTransformation();
 
@@ -20,9 +20,9 @@ $(document).ready(() => {
     paper.project.activeLayer.transformContent = false;
     paper.project.activeLayer.matrix = new paper.Matrix(t.sx, 0, 0, t.sy, t.tx, t.ty);
 
-    var r = new Robot(paper.project.activeLayer);
+    let r = new Robot(paper.project.activeLayer);
 
-    var keyboard = new paper.Tool();
+    let keyboard = new paper.Tool();
     keyboard.onKeyDown = (event) => {
         if (event.key == 'left') {
             r.move("L");
@@ -31,7 +31,7 @@ $(document).ready(() => {
         }
     };
 
-    var hash = window.location.hash ? window.location.hash.substring(1) : null;
+    let hash = window.location.hash ? window.location.hash.substring(1) : null;
 	if (hash != null) {
         hash.split("").map(x => r.move(x));
 	}

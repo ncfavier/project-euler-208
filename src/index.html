@@ -8,14 +8,12 @@
 
         <!-- Libs -->
         <!-- This is where we include things that were just copied to the /dist folder by the 'frontend' task -->
-        <script src="lib/babel-polyfill/dist/polyfill.min.js"></script>
-        <script src="lib/systemjs/dist/system.js"></script>
         <script src="lib/paper/dist/paper-core.min.js"></script>
         <script src="lib/justmath/JustMath.min.js"></script>
 
         <script src="lib/jquery/dist/jquery.min.js"></script>
-        <link rel="stylesheet" href="lib/foundation-sites/dist/foundation.min.css">
-        <script src="lib/foundation-sites/dist/foundation.min.js"></script>
+        <link rel="stylesheet" href="lib/foundation-sites/dist/css/foundation.min.css">
+        <script src="lib/foundation-sites/dist/js/foundation.min.js"></script>
         <!-- End Libs -->
 
     </head>
@@ -37,10 +35,8 @@
 
         <canvas id="canvas" style="display: block; width: 100%; height: 100%"></canvas>
 
-        <!-- Tell SystemJS the base url for scripts is the /dist/js folder, and load the main entry point app.js -->
-        <script>
-            System.config({"baseURL": "js"});
-            System.import("app.js");
+        <script type="module">
+            import './js/app.js';
         </script>
 
     </body>

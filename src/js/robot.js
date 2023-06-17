@@ -1,4 +1,4 @@
-var Vec2 = dcodeIO.JustMath.Vec2;
+const Vec2 = dcodeIO.JustMath.Vec2;
 
 function pt(v) {
     return new paper.Point(v.x, v.y);

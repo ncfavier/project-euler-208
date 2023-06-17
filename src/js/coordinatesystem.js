@@ -16,23 +16,23 @@ export class CoordinateSystem {
 		this.minX = (-width) / 2;
 		this.maxX = width / 2;
 
-		var h = (width / this.realWidth) * this.realHeight;
+		let h = (width / this.realWidth) * this.realHeight;
 
 		this.maxY = h / 2;
 		this.minY = -h / 2;
 	}
 
 	calculateTransformation() {
-		var left = this.minX;
-		var top = this.maxY;
-		var width = this.maxX - this.minX;
-		var height = -(this.maxY - this.minY);
+		let left = this.minX;
+		let top = this.maxY;
+		let width = this.maxX - this.minX;
+		let height = -(this.maxY - this.minY);
 
-		var tx = ((0 - left) / width) * this.realWidth;
-		var ty = ((0 - top) / height) * this.realHeight;
+		let tx = ((0 - left) / width) * this.realWidth;
+		let ty = ((0 - top) / height) * this.realHeight;
 
-		var sx = (1 / width) * this.realWidth;
-		var sy = (1 / height) * this.realHeight;
+		let sx = (1 / width) * this.realWidth;
+		let sy = (1 / height) * this.realHeight;
 
 		this.transform = {sx, sy, tx, ty};
 	}
