@@ -15,18 +15,35 @@ function drawDot(v,color) {
 
 function drawVec(s, v) {
     let e = s.clone().add(v);
-    let g = new paper.Group([
-        new paper.Path.Line(pt(s), pt(e))
-    ]);
+    let g = new paper.Path.Line(pt(s), pt(e));
     g.strokeWidth = 0.05;
     g.strokeColor = "black";
     return g;
 }
 
-function drawArc(a, b, c) {
+function hue(dir) {
+    return Math.floor(180 + 180 * dir / Math.PI);
+}
+
+function drawArc(a, b, c, aDir, cDir) {
     let p = new paper.Path.Arc(pt(a), pt(b), pt(c));
-    p.strokeWidth = 0.05;
-    p.strokeColor = "red";
+    p.strokeWidth = 0.06;
+    console.log(hue(aDir), hue(cDir));
+    p.strokeColor = {
+        gradient: {
+            stops: [{
+                hue: hue(aDir),
+                saturation: 1,
+                brightness: 1
+            }, {
+                hue: hue(cDir),
+                saturation: 1,
+                brightness: 1
+            }]
+        },
+        origin: pt(a),
+        destination: pt(b)
+    };
     return p;
 }
 
@@ -60,30 +77,34 @@ export class Robot {
     }
 
     move(s) {
-        let before = this.p.clone();
         let left = s == 'L';
 
-        let turn = left ? Math.PI/2 : -Math.PI/2;
-        let pole = this.p.clone().add(this.f.clone().rotate(turn));
-
-        let arm = this.p.clone().sub(pole);
-
-        let rot = left ? 2*Math.PI/this.n : -2*Math.PI/this.n;
-        let halfway = arm.clone().rotate(rot/2.0);
-        let whole = arm.clone().rotate(rot);
-
-        let passthrough = pole.clone().add(halfway);
-        let dest = pole.clone().add(whole);
+        this.canvas.addChild(drawDot(this.p));
 
         let oldHeading_ = this.heading_;
         this.heading_ = this.mod(this.heading_ + (left ? -1 : 1));
         this.counts[left ? this.heading_ : oldHeading_] += 1;
 
-        this.p = dest;
-        this.f.rotate(rot);
+        let turn = left ? Math.PI/2 : -Math.PI/2;
+        let pole = this.p.clone().add(this.f.clone().rotate(turn));
+        let arm = this.p.clone().sub(pole);
 
-        this.canvas.addChild(drawArc(before, passthrough, dest));
-        this.canvas.addChild(drawDot(before));
+        let rot = left ? 2*Math.PI/this.n : -2*Math.PI/this.n;
+
+        // Paper.js doesn't support conic gradients, so we approximate one by subdividing.
+        let subdiv = Math.ceil(15 / this.n);
+        let rot_ = rot / subdiv;
+        for (let i = 0; i < subdiv; i++) {
+            let before = this.p.clone();
+            let halfway = arm.clone().rotate(rot_/2);
+            let whole = arm.clone().rotate(rot_);
+            let passthrough = pole.clone().add(halfway);
+            this.p = pole.clone().add(whole);
+            let oldDir = this.f.dir();
+            this.f.rotate(rot_);
+            this.canvas.addChild(drawArc(before, passthrough, this.p, oldDir, this.f.dir()));
+            arm = whole;
+        }
 
         this.drawCurrent();
     }
