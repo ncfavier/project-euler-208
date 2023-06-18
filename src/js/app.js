@@ -20,7 +20,11 @@ $(document).ready(() => {
     paper.project.activeLayer.transformContent = false;
     paper.project.activeLayer.matrix = new paper.Matrix(t.sx, 0, 0, t.sy, t.tx, t.ty);
 
-    let r = new Robot(paper.project.activeLayer);
+    let params = new URLSearchParams(document.location.search);
+    let n = parseInt(params.get('n'));
+    if (isNaN(n)) n = 5;
+
+    let r = new Robot(paper.project.activeLayer, n);
 
     let keyboard = new paper.Tool();
     keyboard.onKeyDown = (event) => {
@@ -28,6 +32,10 @@ $(document).ready(() => {
             r.move("L");
         } else if (event.key == 'right') {
             r.move("R");
+        } else if (event.key == 'r') {
+            r.random();
+        } else if (event.key == 'space') {
+            r.goHome();
         }
     };
 
