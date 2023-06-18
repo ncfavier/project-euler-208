@@ -42,8 +42,8 @@
 	
 	<li>
 <tt>element:</tt> 
-<tt>HTMLCanvasElement</tt>⟋<tt>String</tt>
-&mdash;&nbsp;the HTML canvas element that should be used as the element for the view, or an ID string by which to find the element.
+<tt>HTMLCanvasElement</tt>⟋<tt>String</tt>⟋<a href="../classes/Size.html"><tt>Size</tt></a>
+&mdash;&nbsp;the HTML canvas element that should be used as the element for the view, or an ID string by which to find the element, or the size of the canvas to be created for usage in a web worker.
 
 </li>
 	
@@ -56,8 +56,11 @@
 			<li>
 <tt><a href="../classes/Project.html"><tt>Project</tt></a></tt>
 </li>
+
 		
 	</ul>
+
+
 
     
     
@@ -334,6 +337,8 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
     
 	
 	
+
+
 	
 	
 </div>
@@ -351,6 +356,8 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
     
 	
 	
+
+
 	
 	
 </div>
@@ -372,10 +379,13 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
 		<h4>Returns:</h4>
 		
 			<li>
-<tt></tt>&nbsp;&mdash;&nbsp;Boolean
+<tt><tt>Boolean</tt></tt>
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -394,6 +404,8 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
     
 	
 	
+
+
 	
 	
 </div>
@@ -411,6 +423,8 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
     
 	
 	
+
+
 	
 	
 </div>
@@ -428,6 +442,8 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
     
 	
 	
+
+
 	
 	
 </div>
@@ -465,9 +481,12 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
 			<li>
 <tt><a href="../classes/Layer.html"><tt>Layer</tt></a></tt>&nbsp;&mdash;&nbsp;the added layer, or <code>null</code> if adding was not possible
 </li>
+
 		
 	</ul>
 
+
+
 	
 	
 </div>
@@ -475,9 +494,9 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
 </div>
 
 	
-<div id="insertlayer-index-item" class="member">
+<div id="insertlayer-index-layer" class="member">
 <div class="member-link">
-<a name="insertlayer-index-item" href="#insertlayer-index-item"><tt><b>insertLayer</b>(index, item)</tt></a>
+<a name="insertlayer-index-layer" href="#insertlayer-index-layer"><tt><b>insertLayer</b>(index, layer)</tt></a>
 </div>
 <div class="member-description hidden">
 <div class="member-text">
@@ -495,9 +514,9 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
 </li>
 	
 	<li>
-<tt>item:</tt> 
-<a href="../classes/Item.html"><tt>Item</tt></a>
-&mdash;&nbsp;the item to be inserted in the project
+<tt>layer:</tt> 
+<a href="../classes/Layer.html"><tt>Layer</tt></a>
+&mdash;&nbsp;the layer to be inserted in the project
 
 </li>
 	
@@ -510,8 +529,11 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
 			<li>
 <tt><a href="../classes/Layer.html"><tt>Layer</tt></a></tt>&nbsp;&mdash;&nbsp;the added layer, or <code>null</code> if adding was not possible
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -533,7 +555,7 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
     <ul class="member-list">
 <h4>Options:</h4>
 <li><tt>options.tolerance: <tt>Number</tt></tt> &mdash; the tolerance of the hit-test &mdash;&nbsp;default: <tt><a href="../classes/PaperScope.html#settings"><tt>paperScope.settings</tt></a>.hitTolerance</tt></li>
-<li><tt>options.class: <tt>Function</tt></tt> &mdash; only hit-test again a certain item  class and its sub-classes: <tt>Group</tt>, <tt>Layer</tt>, <tt>Path</tt>, <tt>CompoundPath</tt>, <tt>Shape</tt>, <tt>Raster</tt>, <tt>SymbolItem</tt>, <tt>PointText</tt>, &hellip;</li>
+<li><tt>options.class: <tt>Function</tt></tt> &mdash; only hit-test against a specific item  class, or any of its sub-classes, by providing the constructor  function against which an <code>instanceof</code> check is performed:  <tt>Group</tt>, <tt>Layer</tt>, <tt>Path</tt>, <tt>CompoundPath</tt>, <tt>Shape</tt>, <tt>Raster</tt>, <tt>SymbolItem</tt>, <tt>PointText</tt>, &hellip;</li>
 <li><tt>options.match: <tt>Function</tt></tt> &mdash; a match function to be called for each  found hit result: Return <code>true</code> to return the result, <code>false</code> to keep  searching</li>
 <li><tt>options.fill: <tt>Boolean</tt></tt> &mdash; hit-test the fill of items &mdash;&nbsp;default: <tt>true</tt></li>
 <li><tt>options.stroke: <tt>Boolean</tt></tt> &mdash; hit-test the stroke of path  items, taking into account the setting of stroke color and width &mdash;&nbsp;default: <tt>true</tt></li>
@@ -541,8 +563,9 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
 <li><tt>options.curves: <tt>Boolean</tt></tt> &mdash; hit-test the curves of path items,  without taking the stroke color or width into account</li>
 <li><tt>options.handles: <tt>Boolean</tt></tt> &mdash; hit-test for the handles (<a href="../classes/Segment.html#handlein"><tt>segment.handleIn</tt></a> / <a href="../classes/Segment.html#handleout"><tt>segment.handleOut</tt></a>) of path segments.</li>
 <li><tt>options.ends: <tt>Boolean</tt></tt> &mdash; only hit-test for the first or last  segment points of open path items</li>
-<li><tt>options.bounds: <tt>Boolean</tt></tt> &mdash; hit-test the corners and side-centers of  the bounding rectangle of items (<a href="../classes/Item.html#bounds"><tt>item.bounds</tt></a>)</li>
+<li><tt>options.position: <tt>Boolean</tt></tt> &mdash; hit-test the <a href="../classes/Item.html#position"><tt>item.position</tt></a> of  of items, which depends on the setting of <a href="../classes/Item.html#pivot"><tt>item.pivot</tt></a></li>
 <li><tt>options.center: <tt>Boolean</tt></tt> &mdash; hit-test the <a href="../classes/Rectangle.html#center"><tt>rectangle.center</tt></a> of  the bounding rectangle of items (<a href="../classes/Item.html#bounds"><tt>item.bounds</tt></a>)</li>
+<li><tt>options.bounds: <tt>Boolean</tt></tt> &mdash; hit-test the corners and side-centers of  the bounding rectangle of items (<a href="../classes/Item.html#bounds"><tt>item.bounds</tt></a>)</li>
 <li><tt>options.guides: <tt>Boolean</tt></tt> &mdash; hit-test items that have <tt>Item#guide</tt> set to <code>true</code></li>
 <li><tt>options.selected: <tt>Boolean</tt></tt> &mdash; only hit selected items</li>
 </ul>
@@ -573,10 +596,69 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
 			<li>
 <tt><a href="../classes/HitResult.html"><tt>HitResult</tt></a></tt>&nbsp;&mdash;&nbsp;a hit result object that contains more information  about what exactly was hit or <code>null</code> if nothing was hit
 </li>
+
 		
 	</ul>
 
+
+
 	
+	
+</div>
+</div>
+</div>
+
+	
+<div id="hittestall-point" class="member">
+<div class="member-link">
+<a name="hittestall-point" href="#hittestall-point"><tt><b>hitTestAll</b>(point[, options])</tt></a>
+</div>
+<div class="member-description hidden">
+<div class="member-text">
+	<p>Performs a hit-test on the item and its children (if it is a <a href="../classes/Group.html"><tt>Group</tt></a> or <a href="../classes/Layer.html"><tt>Layer</tt></a>) at the location of the specified point, returning all found hits.</p>
+<p>The options object allows you to control the specifics of the hit- test. See <a href="../classes/Project.html#hittest-point"><tt>hitTest(point[, options])</tt></a> for a list of all options.</p>
+    
+	
+<ul class="member-list">
+	<h4>Parameters:</h4>
+	
+	<li>
+<tt>point:</tt> 
+<a href="../classes/Point.html"><tt>Point</tt></a>
+&mdash;&nbsp;the point where the hit-test should be performed
+
+</li>
+	
+	<li>
+<tt>options:</tt> 
+<tt>Object</tt>
+
+&mdash;&nbsp;optional, default: <tt>{ fill: true, stroke: true, segments: true,  tolerance: settings.hitTolerance }</tt>
+</li>
+	
+</ul>
+
+	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt>Array of <a href="../classes/HitResult.html"><tt>HitResult</tt></a> objects</tt>&nbsp;&mdash;&nbsp;hit result objects for all hits, describing what  exactly was hit or <code>null</code> if nothing was hit
+</li>
+
+		
+	</ul>
+
+
+
+	
+	<ul class="member-list">
+		<h4>See also:</h4>
+		
+			<li><tt><a href="../classes/Project.html#hittest-point"><tt>hitTest(point[, options])</tt></a>;</tt></li>
+		
+	</ul>
+
 	
 </div>
 </div>
@@ -620,8 +702,11 @@ var path2 = new Path.Circle(new Point(175, 50), 20);
 			<li>
 <tt>Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects</tt>&nbsp;&mdash;&nbsp;the list of matching items contained in the project
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<ul class="member-list">
@@ -950,8 +1035,11 @@ for (var i = 0; i < items.length; i++) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the first item in the project matching the given criteria
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -994,8 +1082,11 @@ for (var i = 0; i < items.length; i++) {
 			<li>
 <tt><tt>String</tt></tt>&nbsp;&mdash;&nbsp;the exported JSON data
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -1026,6 +1117,18 @@ for (var i = 0; i < items.length; i++) {
 </ul>
 
 	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the imported item
+</li>
+
+		
+	</ul>
+
+
+
 	
 	
 </div>
@@ -1042,6 +1145,8 @@ for (var i = 0; i < items.length; i++) {
 	<p>Exports the project with all its layers and child items as an SVG DOM, all contained in one top level SVG group node.</p>
     <ul class="member-list">
 <h4>Options:</h4>
+<li><tt>options.bounds: <tt>String</tt>⟋<a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt> &mdash; the bounds of the area  to export, either as a string (<tt>&lsquo;view&rsquo;</tt>, <tt>content&rsquo;</tt>), or a  <a href="../classes/Rectangle.html"><tt>Rectangle</tt></a> object: <code>&#39;view&#39;</code> uses the view bounds,  <code>&#39;content&#39;</code> uses the stroke bounds of all content &mdash;&nbsp;default: <tt>&lsquo;view&rsquo;</tt></li>
+<li><tt>options.matrix: <a href="../classes/Matrix.html"><tt>Matrix</tt></a></tt> &mdash; the matrix with which  to transform the exported content: If <code>options.bounds</code> is set to  <code>&#39;view&#39;</code>, <code>paper.view.matrix</code> is used, for all other settings of  <code>options.bounds</code> the identity matrix is used. &mdash;&nbsp;default: <tt>paper.view.matrix</tt></li>
 <li><tt>options.asString: <tt>Boolean</tt></tt> &mdash; whether a SVG node or a  <code>String</code> is to be returned &mdash;&nbsp;default: <tt>false</tt></li>
 <li><tt>options.precision: <tt>Number</tt></tt> &mdash; the amount of fractional digits in  numbers used in SVG data &mdash;&nbsp;default: <tt>5</tt></li>
 <li><tt>options.matchShapes: <tt>Boolean</tt></tt> &mdash; whether path items should  tried to be converted to SVG shape items (rect, circle, ellipse,  line, polyline, polygon), if their geometries match &mdash;&nbsp;default: <tt>false</tt></li>
@@ -1065,10 +1170,13 @@ for (var i = 0; i < items.length; i++) {
 		<h4>Returns:</h4>
 		
 			<li>
-<tt><tt>SVGElement</tt></tt>&nbsp;&mdash;&nbsp;the project converted to an SVG node
+<tt><tt>SVGElement</tt>⟋<tt>String</tt></tt>&nbsp;&mdash;&nbsp;the project converted to an SVG node or a <code>String</code> depending on <code>option.asString</code> value
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -1119,8 +1227,11 @@ for (var i = 0; i < items.length; i++) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the newly created Paper.js item containing the converted  SVG content
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -1164,8 +1275,11 @@ for (var i = 0; i < items.length; i++) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the newly created Paper.js item containing the converted  SVG content
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -1182,8 +1296,8 @@ for (var i = 0; i < items.length; i++) {
 
 <!-- =========================== copyright notice ========================== -->
 <p class="footer">
-Paper.js v0.10.2<br>
-Copyright &#169; 2011—2016 <a href="http://www.lehni.org" target="_blank">J&uuml;rg Lehni</a> &amp; <a href="http://www.jonathanpuckey.com" target="_blank">Jonathan Puckey</a>. All Rights Reserved.</p>
+Paper.js v0.12.17<br>
+Copyright &#169; 2011—2022 <a href="http://www.lehni.org" target="_blank">J&uuml;rg Lehni</a> &amp; <a href="http://www.jonathanpuckey.com" target="_blank">Jonathan Puckey</a>. All Rights Reserved.</p>
 <div class="content-end"></div>
 
 

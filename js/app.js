@@ -1,56 +1,47 @@
-'use strict';
+import {CoordinateSystem} from './coordinatesystem.js'
+import {Robot} from './robot.js'
 
-System.register(['./coordinatesystem.js', './robot.js'], function (_export, _context) {
-    "use strict";
+$(document).ready(() => {
 
-    var CoordinateSystem, Robot;
-    return {
-        setters: [function (_coordinatesystemJs) {
-            CoordinateSystem = _coordinatesystemJs.CoordinateSystem;
-        }, function (_robotJs) {
-            Robot = _robotJs.Robot;
-        }],
-        execute: function () {
+    const [WIDTH, HEIGHT] = [$(window).width(), $(window).height() - $(".top-bar").outerHeight()];
 
-            $(document).ready(function () {
-                var _ref = [$(window).width(), $(window).height() - $(".top-bar").outerHeight()],
-                    WIDTH = _ref[0],
-                    HEIGHT = _ref[1];
+    $("#canvas").width(WIDTH);
+    $("#canvas").height(HEIGHT);
+    $("#canvas").attr("width", WIDTH);
+    $("#canvas").attr("height", HEIGHT);
 
+    paper.setup($("#canvas").get(0));
 
-                $("#canvas").width(WIDTH);
-                $("#canvas").height(HEIGHT);
-                $("#canvas").attr("width", WIDTH);
-                $("#canvas").attr("height", HEIGHT);
+    let cs = new CoordinateSystem(WIDTH, HEIGHT);
+    cs.autoSetFromWidth(50);
+    cs.calculateTransformation();
 
-                paper.setup($("#canvas").get(0));
+    let t = cs.transform;
+    paper.project.activeLayer.transformContent = false;
+    paper.project.activeLayer.matrix = new paper.Matrix(t.sx, 0, 0, t.sy, t.tx, t.ty);
 
-                var cs = new CoordinateSystem(WIDTH, HEIGHT);
-                cs.autoSetFromWidth(50);
-                cs.calculateTransformation();
+    let params = new URLSearchParams(document.location.search);
+    let n = parseInt(params.get('n'));
+    if (isNaN(n)) n = 5;
 
-                var t = cs.transform;
-                paper.project.activeLayer.transformContent = false;
-                paper.project.activeLayer.matrix = new paper.Matrix(t.sx, 0, 0, t.sy, t.tx, t.ty);
+    let r = new Robot(paper.project.activeLayer, n);
 
-                var r = new Robot(paper.project.activeLayer);
-
-                var keyboard = new paper.Tool();
-                keyboard.onKeyDown = function (event) {
-                    if (event.key == 'left') {
-                        r.move("L");
-                    } else if (event.key == 'right') {
-                        r.move("R");
-                    }
-                };
-
-                var hash = window.location.hash ? window.location.hash.substring(1) : null;
-                if (hash != null) {
-                    hash.split("").map(function (x) {
-                        return r.move(x);
-                    });
-                }
-            });
+    let keyboard = new paper.Tool();
+    keyboard.onKeyDown = (event) => {
+        if (event.key == 'left') {
+            r.move("L");
+        } else if (event.key == 'right') {
+            r.move("R");
+        } else if (event.key == 'r') {
+            r.random();
+        } else if (event.key == 'space') {
+            r.goHome();
         }
     };
+
+    let hash = window.location.hash ? window.location.hash.substring(1) : null;
+	if (hash != null) {
+        hash.split("").map(x => r.move(x));
+	}
+
 });

@@ -54,8 +54,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><a href="../classes/Group.html"><tt>Group</tt></a></tt>
 </li>
+
 		
 	</ul>
+
+
 
     
     <h4>Example:<span class="description">Create a group containing two paths:</span></h4>
@@ -134,7 +137,7 @@ function onFrame(event) {
 	<li>
 <tt>object:</tt> 
 <tt>Object</tt>
-&mdash;&nbsp;an object literal containing the properties to be set on the group
+&mdash;&nbsp;an object containing the properties to be set on  the group
 
 </li>
 	
@@ -147,8 +150,11 @@ function onFrame(event) {
 			<li>
 <tt><a href="../classes/Group.html"><tt>Group</tt></a></tt>
 </li>
+
 		
 	</ul>
+
+
 
     
     <h4>Example:</h4>
@@ -482,6 +488,75 @@ path2.style = myStyle;
 </div>
 
 	
+<div id="locked" class="member">
+<div class="member-link">
+<a name="locked" href="#locked"><tt><b>locked</b></tt></a>
+</div>
+<div class="member-description hidden">
+
+<div class="member-text">
+	<p>Specifies whether the item is locked. When set to <code>true</code>, item interactions with the mouse are disabled.</p>
+	
+	
+	
+		<ul class="member-list">
+			<h4>Default:</h4>
+			<li><tt>false</tt></li>
+		</ul>
+	
+	<ul class="member-list">
+		<h4>Type:</h4>
+		<li>
+			<tt>Boolean</tt>
+		</li>
+	</ul>
+    
+	
+	<h4>Example:</h4>
+
+<div class="paperscript split">
+
+<div class="buttons">
+<div class="button run">Run</div>
+</div>
+
+<script type="text/paperscript" canvas="canvas-8">
+var unlockedItem = new Path.Circle({
+    center: view.center - [35, 0],
+    radius: 30,
+    fillColor: 'springgreen',
+    onMouseDown: function() {
+        this.fillColor = Color.random();
+    }
+});
+
+var lockedItem = new Path.Circle({
+    center: view.center + [35, 0],
+    radius: 30,
+    fillColor: 'crimson',
+    locked: true,
+    // This event won't be triggered because the item is locked.
+    onMouseDown: function() {
+        this.fillColor = Color.random();
+    }
+});
+
+new PointText({
+    content: 'Click on both circles to see which one is locked.',
+    point: view.center - [0, 35],
+    justification: 'center'
+});
+</script>
+<div class="canvas"><canvas width="516" height="100" id="canvas-8"></canvas></div>
+</div>
+
+
+</div>
+
+</div>
+</div>
+
+	
 <div id="visible" class="member">
 <div class="member-link">
 <a name="visible" href="#visible"><tt><b>visible</b></tt></a>
@@ -514,7 +589,7 @@ path2.style = myStyle;
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-8">
+<script type="text/paperscript" canvas="canvas-9">
 var path = new Path.Circle({
     center: [50, 50],
     radius: 20,
@@ -524,7 +599,7 @@ var path = new Path.Circle({
 // Hide the path:
 path.visible = false;
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-8"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-9"></canvas></div>
 </div>
 
 
@@ -547,7 +622,7 @@ path.visible = false;
 		<ul class="member-list">
 			<h4>Values:</h4>
 			<li><tt>'normal'</tt>, <tt>'multiply'</tt>, <tt>'screen'</tt>, <tt>'overlay'</tt>, <tt>'soft-light'</tt>, <tt>'hard-
-    light'</tt>, <tt>'color-dodge'</tt>, <tt>'color-burn'</tt>, <tt>'darken'</tt>, <tt>'lighten'</tt>, <tt>'difference'</tt>, <tt>'exclusion'</tt>, <tt>'hue'</tt>, <tt>'saturation'</tt>, <tt>'luminosity'</tt>, <tt>'color'</tt>, <tt>'add'</tt>, <tt>'subtract'</tt>, <tt>'average'</tt>, <tt>'pin-light'</tt>, <tt>'negation'</tt>, <tt>'source- over'</tt>, <tt>'source-in'</tt>, <tt>'source-out'</tt>, <tt>'source-atop'</tt>, <tt>'destination-over'</tt>, <tt>'destination-in'</tt>, <tt>'destination-out'</tt>, <tt>'destination-atop'</tt>, <tt>'lighter'</tt>, <tt>'darker'</tt>, <tt>'copy'</tt>, <tt>'xor'</tt></li>
+    light'</tt>, <tt>'color-dodge'</tt>, <tt>'color-burn'</tt>, <tt>'darken'</tt>, <tt>'lighten'</tt>, <tt>'difference'</tt>, <tt>'exclusion'</tt>, <tt>'hue'</tt>, <tt>'saturation'</tt>, <tt>'luminosity'</tt>, <tt>'color'</tt>, <tt>'add'</tt>, <tt>'subtract'</tt>, <tt>'average'</tt>, <tt>'pin-light'</tt>, <tt>'negation'</tt>, <tt>'source-over'</tt>, <tt>'source-in'</tt>, <tt>'source-out'</tt>, <tt>'source-atop'</tt>, <tt>'destination-over'</tt>, <tt>'destination-in'</tt>, <tt>'destination-out'</tt>, <tt>'destination-atop'</tt>, <tt>'lighter'</tt>, <tt>'darker'</tt>, <tt>'copy'</tt>, <tt>'xor'</tt></li>
 		</ul>
 	
 	
@@ -572,7 +647,7 @@ path.visible = false;
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-9">
+<script type="text/paperscript" canvas="canvas-10">
 // Create a white rectangle in the background
 // with the same dimensions as the view:
 var background = new Path.Rectangle(view.bounds);
@@ -593,7 +668,7 @@ var circle2 = new Path.Circle({
 // Set the blend mode of circle2:
 circle2.blendMode = 'multiply';
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-9"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-10"></canvas></div>
 </div>
 
 
@@ -635,7 +710,7 @@ circle2.blendMode = 'multiply';
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-10">
+<script type="text/paperscript" canvas="canvas-11">
 var circle = new Path.Circle({
     center: [80, 50],
     radius: 35,
@@ -653,7 +728,7 @@ var circle2 = new Path.Circle({
 // Make circle2 50% transparent:
 circle2.opacity = 0.5;
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-10"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-11"></canvas></div>
 </div>
 
 
@@ -674,6 +749,11 @@ circle2.opacity = 0.5;
 <p>Paper.js draws the visual outlines of selected items on top of your project. This can be useful for debugging, as it allows you to see the construction of paths, position of path curves, individual segment points and bounding boxes of symbol and raster items.</p>
 	
 	
+	
+		<ul class="member-list">
+			<h4>Default:</h4>
+			<li><tt>false</tt></li>
+		</ul>
 	
 	<ul class="member-list">
 		<h4>Type:</h4>
@@ -704,14 +784,14 @@ circle2.opacity = 0.5;
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-11">
+<script type="text/paperscript" canvas="canvas-12">
 var path = new Path.Circle({
     center: [80, 50],
     radius: 35
 });
 path.selected = true; // Select the path
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-11"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-12"></canvas></div>
 </div>
 
 
@@ -728,9 +808,14 @@ path.selected = true; // Select the path
 <div class="member-description hidden">
 
 <div class="member-text">
-	<p>Specifies whether the item defines a clip mask. This can only be set on paths, compound paths, and text frame objects, and only if the item is already contained within a clipping group.</p>
+	<p>Specifies whether the item defines a clip mask. This can only be set on paths and compound paths, and only if the item is already contained within a clipping group.</p>
 	
 	
+	
+		<ul class="member-list">
+			<h4>Default:</h4>
+			<li><tt>false</tt></li>
+		</ul>
 	
 	<ul class="member-list">
 		<h4>Type:</h4>
@@ -837,7 +922,7 @@ console.log(path.data.pets.length); // 1</code></pre>
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-12">
+<script type="text/paperscript" canvas="canvas-13">
 // Create a circle at position { x: 10, y: 10 }
 var circle = new Path.Circle({
     center: new Point(10, 10),
@@ -851,7 +936,7 @@ circle.position = new Point(20, 20);
 // Move the circle 100 points to the right and 50 points down
 circle.position += new Point(100, 50);
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-12"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-13"></canvas></div>
 </div>
 
 
@@ -863,7 +948,7 @@ circle.position += new Point(100, 50);
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-13">
+<script type="text/paperscript" canvas="canvas-14">
 // Create a circle at position { x: 20, y: 20 }
 var circle = new Path.Circle({
     center: new Point(20, 20),
@@ -874,7 +959,7 @@ var circle = new Path.Circle({
 // Move the circle 100 points to the right
 circle.position.x += 100;
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-13"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-14"></canvas></div>
 </div>
 
 
@@ -894,6 +979,11 @@ circle.position.x += 100;
 	<p>The item&rsquo;s pivot point specified in the item coordinate system, defining the point around which all transformations are hinging. This is also the reference point for <a href="../classes/Item.html#position"><tt>position</tt></a>. By default, it is set to <code>null</code>, meaning the <a href="../classes/Rectangle.html#center"><tt>rectangle.center</tt></a> of the item&rsquo;s <a href="../classes/Item.html#bounds"><tt>bounds</tt></a> rectangle is used as pivot.</p>
 	
 	
+	
+		<ul class="member-list">
+			<h4>Default:</h4>
+			<li><tt>null</tt></li>
+		</ul>
 	
 	<ul class="member-list">
 		<h4>Type:</h4>
@@ -988,6 +1078,33 @@ circle.position.x += 100;
 </div>
 
 	
+<div id="internalbounds" class="member">
+<div class="member-link">
+<a name="internalbounds" href="#internalbounds"><tt><b>internalBounds</b></tt></a>
+</div>
+<div class="member-description hidden">
+
+<div class="member-text">
+	<p>The bounding rectangle of the item without any matrix transformations.</p>
+<p>Typical use case would be drawing a frame around the object where you want to draw something of the same size, position, rotation, and scaling, like a selection frame.</p>
+	
+	
+	
+	<ul class="member-list">
+		<h4>Type:</h4>
+		<li>
+			<a href="../classes/Rectangle.html"><tt>Rectangle</tt></a>
+		</li>
+	</ul>
+    
+	
+	
+</div>
+
+</div>
+</div>
+
+	
 <div id="rotation" class="member">
 <div class="member-link">
 <a name="rotation" href="#rotation"><tt><b>rotation</b></tt></a>
@@ -995,7 +1112,7 @@ circle.position.x += 100;
 <div class="member-description hidden">
 
 <div class="member-text">
-	<p>The current rotation angle of the item, as described by its <a href="../classes/Item.html#matrix"><tt>matrix</tt></a>.</p>
+	<p>The current rotation angle of the item, as described by its <a href="../classes/Item.html#matrix"><tt>matrix</tt></a>. Please note that this only returns meaningful values for items with <a href="../classes/Item.html#applymatrix"><tt>applyMatrix</tt></a> set to <code>false</code>, meaning they do not directly bake transformations into their content.</p>
 	
 	
 	
@@ -1021,7 +1138,7 @@ circle.position.x += 100;
 <div class="member-description hidden">
 
 <div class="member-text">
-	<p>The current scale factor of the item, as described by its <a href="../classes/Item.html#matrix"><tt>matrix</tt></a>.</p>
+	<p>The current scale factor of the item, as described by its <a href="../classes/Item.html#matrix"><tt>matrix</tt></a>. Please note that this only returns meaningful values for items with <a href="../classes/Item.html#applymatrix"><tt>applyMatrix</tt></a> set to <code>false</code>, meaning they do not directly bake transformations into their content.</p>
 	
 	
 	
@@ -1133,6 +1250,11 @@ circle.position.x += 100;
 	
 	
 	
+		<ul class="member-list">
+			<h4>Default:</h4>
+			<li><tt>true</tt></li>
+		</ul>
+	
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
@@ -1143,16 +1265,6 @@ circle.position.x += 100;
 	
 	
 </div>
-
-</div>
-</div>
-
-	
-<div id="transformcontent" class="member">
-<div class="member-link">
-<a name="transformcontent" href="#transformcontent"><tt><b>transformContent</b></tt></a>
-</div>
-<div class="member-description hidden">
 
 </div>
 </div>
@@ -1286,7 +1398,7 @@ console.log(path.parent == group); // true</code></pre>
 console.log(path.parent == project.activeLayer); // true
 
 var group = new Group();
-group.parent = path;
+path.parent = group;
 
 // Now the parent of the path has become the group:
 console.log(path.parent == group); // true
@@ -1343,7 +1455,7 @@ console.log(group.children[0] == path); // true</code></pre>
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-14">
+<script type="text/paperscript" canvas="canvas-15">
 var path = new Path.Circle({
     center: [80, 50],
     radius: 35
@@ -1356,7 +1468,7 @@ group.addChild(path);
 // Access the path through the group's children array:
 group.children[0].fillColor = 'red';
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-14"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-15"></canvas></div>
 </div>
 
 
@@ -1368,7 +1480,7 @@ group.children[0].fillColor = 'red';
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-15">
+<script type="text/paperscript" canvas="canvas-16">
 var path = new Path.Circle({
     center: [80, 50],
     radius: 35
@@ -1383,7 +1495,7 @@ group.addChild(path);
 // The path can be accessed by name:
 group.children['example'].fillColor = 'orange';
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-15"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-16"></canvas></div>
 </div>
 
 
@@ -1395,7 +1507,7 @@ group.children['example'].fillColor = 'orange';
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-16">
+<script type="text/paperscript" canvas="canvas-17">
 var path = new Path.Circle({
     center: [80, 50],
     radius: 35
@@ -1407,7 +1519,7 @@ group.children = [path];
 // The path is the first child of the group:
 group.firstChild.fillColor = 'green';
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-16"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-17"></canvas></div>
 </div>
 
 
@@ -1573,7 +1685,7 @@ group.firstChild.fillColor = 'green';
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<a href="../classes/Color.html"><tt>Color</tt></a>
+			<a href="../classes/Color.html"><tt>Color</tt></a>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -1586,7 +1698,7 @@ group.firstChild.fillColor = 'green';
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-17">
+<script type="text/paperscript" canvas="canvas-18">
 // Create a circle shaped path at { x: 80, y: 50 }
 // with a radius of 35:
 var circle = new Path.Circle({
@@ -1597,7 +1709,7 @@ var circle = new Path.Circle({
 // Set its stroke color to RGB red:
 circle.strokeColor = new Color(1, 0, 0);
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-17"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-18"></canvas></div>
 </div>
 
 
@@ -1634,7 +1746,7 @@ circle.strokeColor = new Color(1, 0, 0);
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-18">
+<script type="text/paperscript" canvas="canvas-19">
 // Create a circle shaped path at { x: 80, y: 50 }
 // with a radius of 35:
 var circle = new Path.Circle({
@@ -1646,7 +1758,7 @@ var circle = new Path.Circle({
 // Set its stroke width to 10:
 circle.strokeWidth = 10;
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-18"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-19"></canvas></div>
 </div>
 
 
@@ -1693,7 +1805,7 @@ circle.strokeWidth = 10;
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-19">
+<script type="text/paperscript" canvas="canvas-20">
 var line = new Path({
     segments: [[80, 50], [420, 50]],
     strokeColor: 'black',
@@ -1714,7 +1826,7 @@ var line2 = line.clone();
 line2.position.y += 100;
 line2.strokeCap = 'butt';
 </script>
-<div class="canvas"><canvas width="516" height="200" id="canvas-19"></canvas></div>
+<div class="canvas"><canvas width="516" height="200" id="canvas-20"></canvas></div>
 </div>
 
 
@@ -1761,7 +1873,7 @@ line2.strokeCap = 'butt';
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-20">
+<script type="text/paperscript" canvas="canvas-21">
 var path = new Path({
     segments: [[80, 100], [120, 40], [160, 100]],
     strokeColor: 'black',
@@ -1778,7 +1890,7 @@ var path3 = path2.clone();
 path3.position.x += path3.bounds.width * 1.5;
 path3.strokeJoin = 'bevel';
 </script>
-<div class="canvas"><canvas width="516" height="120" id="canvas-20"></canvas></div>
+<div class="canvas"><canvas width="516" height="120" id="canvas-21"></canvas></div>
 </div>
 
 
@@ -1869,7 +1981,7 @@ path3.strokeJoin = 'bevel';
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<tt>Array</tt>
+			Array of <tt>Numbers</tt>
 		</li>
 	</ul>
     
@@ -1882,7 +1994,7 @@ path3.strokeJoin = 'bevel';
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-21">
+<script type="text/paperscript" canvas="canvas-22">
 var path = new Path.Circle({
     center: [80, 50],
     radius: 40,
@@ -1893,7 +2005,7 @@ var path = new Path.Circle({
 // Set the dashed stroke to [10pt dash, 4pt gap]:
 path.dashArray = [10, 4];
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-21"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-22"></canvas></div>
 </div>
 
 
@@ -1950,7 +2062,7 @@ path.dashArray = [10, 4];
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<a href="../classes/Color.html"><tt>Color</tt></a>
+			<a href="../classes/Color.html"><tt>Color</tt></a>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -1963,7 +2075,7 @@ path.dashArray = [10, 4];
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-22">
+<script type="text/paperscript" canvas="canvas-23">
 // Create a circle shaped path at { x: 80, y: 50 }
 // with a radius of 35:
 var circle = new Path.Circle({
@@ -1974,7 +2086,7 @@ var circle = new Path.Circle({
 // Set the fill color of the circle to RGB red:
 circle.fillColor = new Color(1, 0, 0);
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-22"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-23"></canvas></div>
 </div>
 
 
@@ -2036,7 +2148,7 @@ circle.fillColor = new Color(1, 0, 0);
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<a href="../classes/Color.html"><tt>Color</tt></a>
+			<a href="../classes/Color.html"><tt>Color</tt></a>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -2049,7 +2161,7 @@ circle.fillColor = new Color(1, 0, 0);
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-23">
+<script type="text/paperscript" canvas="canvas-24">
 var circle = new Path.Circle({
     center: [80, 50],
     radius: 35,
@@ -2062,7 +2174,7 @@ var circle = new Path.Circle({
     shadowOffset: new Point(5, 5)
 });
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-23"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-24"></canvas></div>
 </div>
 
 
@@ -2150,7 +2262,7 @@ var circle = new Path.Circle({
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<a href="../classes/Color.html"><tt>Color</tt></a>
+			<a href="../classes/Color.html"><tt>Color</tt></a>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -2178,7 +2290,7 @@ var circle = new Path.Circle({
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<tt>Function</tt>
+			<tt>Function</tt>⟋<tt>null</tt>
 		</li>
 	</ul>
     <ul class="member-list">
@@ -2203,7 +2315,7 @@ var circle = new Path.Circle({
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-24">
+<script type="text/paperscript" canvas="canvas-25">
 // Create a rectangle shaped path with its top left point at:
 // {x: 50, y: 25} and a size of {width: 50, height: 50}
 var path = new Path.Rectangle(new Point(50, 25), new Size(50, 50));
@@ -2214,7 +2326,7 @@ path.onFrame = function(event) {
     this.rotate(3);
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-24"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-25"></canvas></div>
 </div>
 
 
@@ -2238,7 +2350,7 @@ path.onFrame = function(event) {
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<tt>Function</tt>
+			<tt>Function</tt>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -2258,7 +2370,7 @@ path.onFrame = function(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-25">
+<script type="text/paperscript" canvas="canvas-26">
 // Create a circle shaped path at the center of the view:
 var path = new Path.Circle({
     center: view.center,
@@ -2272,7 +2384,7 @@ path.onMouseDown = function(event) {
     this.fillColor = 'red';
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-25"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-26"></canvas></div>
 </div>
 
 
@@ -2284,7 +2396,7 @@ path.onMouseDown = function(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-26">
+<script type="text/paperscript" canvas="canvas-27">
 // Loop 30 times:
 for (var i = 0; i < 30; i++) {
     // Create a circle shaped path at a random position
@@ -2302,7 +2414,7 @@ for (var i = 0; i < 30; i++) {
     }
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-26"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-27"></canvas></div>
 </div>
 
 
@@ -2326,7 +2438,7 @@ for (var i = 0; i < 30; i++) {
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<tt>Function</tt>
+			<tt>Function</tt>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -2346,7 +2458,7 @@ for (var i = 0; i < 30; i++) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-27">
+<script type="text/paperscript" canvas="canvas-28">
 // Create a circle shaped path at the center of the view:
 var path = new Path.Circle({
     center: view.center,
@@ -2359,7 +2471,7 @@ path.onMouseDrag = function(event) {
     path.position += event.delta;
 }
 </script>
-<div class="canvas"><canvas width="516" height="240" id="canvas-27"></canvas></div>
+<div class="canvas"><canvas width="516" height="240" id="canvas-28"></canvas></div>
 </div>
 
 
@@ -2383,7 +2495,7 @@ path.onMouseDrag = function(event) {
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<tt>Function</tt>
+			<tt>Function</tt>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -2403,7 +2515,7 @@ path.onMouseDrag = function(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-28">
+<script type="text/paperscript" canvas="canvas-29">
 // Create a circle shaped path at the center of the view:
 var path = new Path.Circle({
     center: view.center,
@@ -2417,7 +2529,7 @@ path.onMouseUp = function(event) {
     this.fillColor = 'red';
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-28"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-29"></canvas></div>
 </div>
 
 
@@ -2441,7 +2553,7 @@ path.onMouseUp = function(event) {
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<tt>Function</tt>
+			<tt>Function</tt>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -2461,7 +2573,7 @@ path.onMouseUp = function(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-29">
+<script type="text/paperscript" canvas="canvas-30">
 // Create a circle shaped path at the center of the view:
 var path = new Path.Circle({
     center: view.center,
@@ -2475,7 +2587,7 @@ path.onClick = function(event) {
     this.fillColor = 'red';
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-29"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-30"></canvas></div>
 </div>
 
 
@@ -2487,7 +2599,7 @@ path.onClick = function(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-30">
+<script type="text/paperscript" canvas="canvas-31">
 // Loop 30 times:
 for (var i = 0; i < 30; i++) {
     // Create a circle shaped path at a random position
@@ -2505,7 +2617,7 @@ for (var i = 0; i < 30; i++) {
     }
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-30"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-31"></canvas></div>
 </div>
 
 
@@ -2529,7 +2641,7 @@ for (var i = 0; i < 30; i++) {
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<tt>Function</tt>
+			<tt>Function</tt>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -2549,7 +2661,7 @@ for (var i = 0; i < 30; i++) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-31">
+<script type="text/paperscript" canvas="canvas-32">
 // Create a circle shaped path at the center of the view:
 var path = new Path.Circle({
     center: view.center,
@@ -2563,7 +2675,7 @@ path.onDoubleClick = function(event) {
     this.fillColor = 'red';
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-31"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-32"></canvas></div>
 </div>
 
 
@@ -2575,7 +2687,7 @@ path.onDoubleClick = function(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-32">
+<script type="text/paperscript" canvas="canvas-33">
 // Loop 30 times:
 for (var i = 0; i < 30; i++) {
     // Create a circle shaped path at a random position
@@ -2593,7 +2705,7 @@ for (var i = 0; i < 30; i++) {
     }
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-32"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-33"></canvas></div>
 </div>
 
 
@@ -2617,7 +2729,7 @@ for (var i = 0; i < 30; i++) {
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<tt>Function</tt>
+			<tt>Function</tt>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -2637,7 +2749,7 @@ for (var i = 0; i < 30; i++) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-33">
+<script type="text/paperscript" canvas="canvas-34">
 // Create a circle shaped path at the center of the view:
     var path = new Path.Circle({
     center: view.center,
@@ -2651,7 +2763,7 @@ path.onMouseMove = function(event) {
     this.opacity = Math.random();
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-33"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-34"></canvas></div>
 </div>
 
 
@@ -2675,7 +2787,7 @@ path.onMouseMove = function(event) {
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<tt>Function</tt>
+			<tt>Function</tt>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -2695,7 +2807,7 @@ path.onMouseMove = function(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-34">
+<script type="text/paperscript" canvas="canvas-35">
 // Create a circle shaped path at the center of the view:
 var path = new Path.Circle({
     center: view.center,
@@ -2713,7 +2825,7 @@ path.onMouseLeave = function(event) {
     this.fillColor = 'black';
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-34"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-35"></canvas></div>
 </div>
 
 
@@ -2725,7 +2837,7 @@ path.onMouseLeave = function(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-35">
+<script type="text/paperscript" canvas="canvas-36">
 function enter(event) {
     this.fillColor = 'red';
 }
@@ -2747,7 +2859,7 @@ function onMouseDown(event) {
     path.onMouseLeave = leave;
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-35"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-36"></canvas></div>
 </div>
 
 
@@ -2771,7 +2883,7 @@ function onMouseDown(event) {
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
-			<tt>Function</tt>
+			<tt>Function</tt>⟋<tt>null</tt>
 		</li>
 	</ul>
     
@@ -2791,7 +2903,7 @@ function onMouseDown(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-36">
+<script type="text/paperscript" canvas="canvas-37">
 // Create a circle shaped path at the center of the view:
 var path = new Path.Circle({
     center: view.center,
@@ -2804,7 +2916,7 @@ path.onMouseLeave = function(event) {
     this.fillColor = 'red';
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-36"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-37"></canvas></div>
 </div>
 
 
@@ -2826,7 +2938,7 @@ path.onMouseLeave = function(event) {
 </div>
 <div class="member-description hidden">
 <div class="member-text">
-	<p>Sets those properties of the passed object literal on this item to the values defined in the object literal, if the item has property of the given name (or a setter defined for it).</p>
+	<p>Sets the properties of the passed object literal on this item to the values defined in the object literal, if the item has property of the given name (or a setter defined for it).</p>
     
 	
 <ul class="member-list">
@@ -2848,8 +2960,11 @@ path.onMouseLeave = function(event) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the item itself
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<h4>Example:<span class="description">Setting properties through an object literal</span></h4>
@@ -2860,7 +2975,7 @@ path.onMouseLeave = function(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-37">
+<script type="text/paperscript" canvas="canvas-38">
 var circle = new Path.Circle({
     center: [80, 50],
     radius: 35
@@ -2873,7 +2988,7 @@ circle.set({
     selected: true
 });
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-37"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-38"></canvas></div>
 </div>
 
 
@@ -2914,8 +3029,11 @@ circle.set({
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the newly cloned item
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<h4>Example:<span class="description">Cloning items:</span></h4>
@@ -2926,7 +3044,7 @@ circle.set({
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-38">
+<script type="text/paperscript" canvas="canvas-39">
 var circle = new Path.Circle({
     center: [50, 50],
     radius: 10,
@@ -2941,7 +3059,7 @@ for (var i = 0; i < 20; i++) {
     copy.position.x += i * copy.bounds.width;
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-38"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-39"></canvas></div>
 </div>
 
 
@@ -2972,6 +3090,8 @@ for (var i = 0; i < 20; i++) {
 </ul>
 
 	
+
+
 	
 	
 </div>
@@ -3008,6 +3128,8 @@ for (var i = 0; i < 20; i++) {
 </ul>
 
 	
+
+
 	
 	
 </div>
@@ -3017,28 +3139,26 @@ for (var i = 0; i < 20; i++) {
 	
 <div id="rasterize" class="member">
 <div class="member-link">
-<a name="rasterize" href="#rasterize"><tt><b>rasterize</b>([resolution[, insert]])</tt></a>
+<a name="rasterize" href="#rasterize"><tt><b>rasterize</b>([options])</tt></a>
 </div>
 <div class="member-description hidden">
 <div class="member-text">
 	<p>Rasterizes the item into a newly created Raster object. The item itself is not removed after rasterization.</p>
-    
+    <ul class="member-list">
+<h4>Options:</h4>
+<li><tt>resolution: <tt>Number</tt></tt> &mdash; the desired resolution to  be used when rasterizing, in pixels per inch (DPI). If not specified,  the value of <code>view.resolution</code> is used by default. &mdash;&nbsp;default: <tt>view.resolution</tt></li>
+<li><tt>raster: <a href="../classes/Raster.html"><tt>Raster</tt></a></tt> &mdash; specifies a raster to be reused when  rasterizing. If the raster has the desired size already, then the  underlying canvas is reused and no new memory needs to be allocated.  If no raster is provided, a new raster item is created and returned  instead. &mdash;&nbsp;default: <tt>null</tt></li>
+<li><tt>insert: <tt>Boolean</tt></tt> &mdash; specifies whether the raster should be  inserted into the scene graph. When set to <code>true</code>, it is inserted  above the rasterized item. &mdash;&nbsp;default: <tt>true</tt></li>
+</ul>
 	
 <ul class="member-list">
 	<h4>Parameters:</h4>
 	
 	<li>
-<tt>resolution:</tt> 
-<tt>Number</tt>
-&mdash;&nbsp;the resolution of the raster  in pixels per inch (DPI). If not specified, the value of  <code>view.resolution</code> is used.
-&mdash;&nbsp;optional, default: <tt>view.resolution</tt>
-</li>
-	
-	<li>
-<tt>insert:</tt> 
-<tt>Boolean</tt>
-&mdash;&nbsp;specifies whether the raster should be  inserted into the scene graph. When set to <code>true</code>, it is inserted  above the original
-&mdash;&nbsp;optional, default: <tt>true</tt>
+<tt>options:</tt> 
+<tt>Object</tt>
+&mdash;&nbsp;the rasterization options
+&mdash;&nbsp;optional, default: <tt>{}</tt>
 </li>
 	
 </ul>
@@ -3048,10 +3168,13 @@ for (var i = 0; i < 20; i++) {
 		<h4>Returns:</h4>
 		
 			<li>
-<tt><a href="../classes/Raster.html"><tt>Raster</tt></a></tt>&nbsp;&mdash;&nbsp;the newly created raster item
+<tt><a href="../classes/Raster.html"><tt>Raster</tt></a></tt>&nbsp;&mdash;&nbsp;the reused raster or the newly created raster item
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<h4>Example:<span class="description">Rasterizing an item:</span></h4>
@@ -3062,7 +3185,7 @@ for (var i = 0; i < 20; i++) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-39">
+<script type="text/paperscript" canvas="canvas-40">
 var circle = new Path.Circle({
     center: [50, 50],
     radius: 5,
@@ -3079,7 +3202,7 @@ raster.position.x += 100;
 circle.scale(5);
 raster.scale(5);
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-39"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-40"></canvas></div>
 </div>
 
 
@@ -3112,6 +3235,18 @@ raster.scale(5);
 </ul>
 
 	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><tt>Boolean</tt></tt>
+</li>
+
+		
+	</ul>
+
+
+
 	
 	<h4>Example:<span class="description">Click within and outside the star below Create a star shaped path:</span></h4>
 
@@ -3121,7 +3256,7 @@ raster.scale(5);
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-40">
+<script type="text/paperscript" canvas="canvas-41">
 var path = new Path.Star({
     center: [50, 50],
     points: 12,
@@ -3142,7 +3277,7 @@ function onMouseDown(event) {
     }
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-40"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-41"></canvas></div>
 </div>
 
 
@@ -3179,8 +3314,11 @@ function onMouseDown(event) {
 			<li>
 <tt><tt>Boolean</tt></tt>
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3217,8 +3355,11 @@ function onMouseDown(event) {
 			<li>
 <tt><tt>Boolean</tt></tt>
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3240,7 +3381,7 @@ function onMouseDown(event) {
     <ul class="member-list">
 <h4>Options:</h4>
 <li><tt>options.tolerance: <tt>Number</tt></tt> &mdash; the tolerance of the hit-test &mdash;&nbsp;default: <tt><a href="../classes/PaperScope.html#settings"><tt>paperScope.settings</tt></a>.hitTolerance</tt></li>
-<li><tt>options.class: <tt>Function</tt></tt> &mdash; only hit-test again a certain item  class and its sub-classes: <tt>Group</tt>, <tt>Layer</tt>, <tt>Path</tt>, <tt>CompoundPath</tt>, <tt>Shape</tt>, <tt>Raster</tt>, <tt>SymbolItem</tt>, <tt>PointText</tt>, &hellip;</li>
+<li><tt>options.class: <tt>Function</tt></tt> &mdash; only hit-test against a specific item  class, or any of its sub-classes, by providing the constructor  function against which an <code>instanceof</code> check is performed:  <tt>Group</tt>, <tt>Layer</tt>, <tt>Path</tt>, <tt>CompoundPath</tt>, <tt>Shape</tt>, <tt>Raster</tt>, <tt>SymbolItem</tt>, <tt>PointText</tt>, &hellip;</li>
 <li><tt>options.match: <tt>Function</tt></tt> &mdash; a match function to be called for each  found hit result: Return <code>true</code> to return the result, <code>false</code> to keep  searching</li>
 <li><tt>options.fill: <tt>Boolean</tt></tt> &mdash; hit-test the fill of items &mdash;&nbsp;default: <tt>true</tt></li>
 <li><tt>options.stroke: <tt>Boolean</tt></tt> &mdash; hit-test the stroke of path  items, taking into account the setting of stroke color and width &mdash;&nbsp;default: <tt>true</tt></li>
@@ -3248,8 +3389,9 @@ function onMouseDown(event) {
 <li><tt>options.curves: <tt>Boolean</tt></tt> &mdash; hit-test the curves of path items,  without taking the stroke color or width into account</li>
 <li><tt>options.handles: <tt>Boolean</tt></tt> &mdash; hit-test for the handles (<a href="../classes/Segment.html#handlein"><tt>segment.handleIn</tt></a> / <a href="../classes/Segment.html#handleout"><tt>segment.handleOut</tt></a>) of path segments.</li>
 <li><tt>options.ends: <tt>Boolean</tt></tt> &mdash; only hit-test for the first or last  segment points of open path items</li>
-<li><tt>options.bounds: <tt>Boolean</tt></tt> &mdash; hit-test the corners and side-centers of  the bounding rectangle of items (<a href="../classes/Item.html#bounds"><tt>item.bounds</tt></a>)</li>
+<li><tt>options.position: <tt>Boolean</tt></tt> &mdash; hit-test the <a href="../classes/Item.html#position"><tt>item.position</tt></a> of  of items, which depends on the setting of <a href="../classes/Item.html#pivot"><tt>item.pivot</tt></a></li>
 <li><tt>options.center: <tt>Boolean</tt></tt> &mdash; hit-test the <a href="../classes/Rectangle.html#center"><tt>rectangle.center</tt></a> of  the bounding rectangle of items (<a href="../classes/Item.html#bounds"><tt>item.bounds</tt></a>)</li>
+<li><tt>options.bounds: <tt>Boolean</tt></tt> &mdash; hit-test the corners and side-centers of  the bounding rectangle of items (<a href="../classes/Item.html#bounds"><tt>item.bounds</tt></a>)</li>
 <li><tt>options.guides: <tt>Boolean</tt></tt> &mdash; hit-test items that have <tt>Item#guide</tt> set to <code>true</code></li>
 <li><tt>options.selected: <tt>Boolean</tt></tt> &mdash; only hit selected items</li>
 </ul>
@@ -3260,7 +3402,7 @@ function onMouseDown(event) {
 	<li>
 <tt>point:</tt> 
 <a href="../classes/Point.html"><tt>Point</tt></a>
-&mdash;&nbsp;the point where the hit-test should be performed
+&mdash;&nbsp;the point where the hit-test should be performed  (in global coordinates system).
 
 </li>
 	
@@ -3280,8 +3422,11 @@ function onMouseDown(event) {
 			<li>
 <tt><a href="../classes/HitResult.html"><tt>HitResult</tt></a></tt>&nbsp;&mdash;&nbsp;a hit result object describing what exactly was hit  or <code>null</code> if nothing was hit
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3306,7 +3451,7 @@ function onMouseDown(event) {
 	<li>
 <tt>point:</tt> 
 <a href="../classes/Point.html"><tt>Point</tt></a>
-&mdash;&nbsp;the point where the hit-test should be performed
+&mdash;&nbsp;the point where the hit-test should be performed  (in global coordinates system).
 
 </li>
 	
@@ -3326,8 +3471,11 @@ function onMouseDown(event) {
 			<li>
 <tt>Array of <a href="../classes/HitResult.html"><tt>HitResult</tt></a> objects</tt>&nbsp;&mdash;&nbsp;hit result objects for all hits, describing what  exactly was hit or <code>null</code> if nothing was hit
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<ul class="member-list">
@@ -3372,8 +3520,11 @@ function onMouseDown(event) {
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item matches all the criteria, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<ul class="member-list">
@@ -3425,8 +3576,11 @@ function onMouseDown(event) {
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item matches the state, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<ul class="member-list">
@@ -3455,9 +3609,9 @@ function onMouseDown(event) {
 <h4>Options:</h4>
 <li><tt>options.recursive: <tt>Boolean</tt></tt> &mdash; whether to loop recursively  through all children, or stop at the current level &mdash;&nbsp;default: <tt>true</tt></li>
 <li><tt>options.match: <tt>Function</tt></tt> &mdash; a match function to be called for each  item, allowing the definition of more flexible item checks that are  not bound to properties. If no other match properties are defined,  this function can also be passed instead of the <code>options</code> object</li>
-<li><tt>options.class: <tt>Function</tt></tt> &mdash; the constructor function of the item type  to match against</li>
-<li><tt>options.inside: <a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt> &mdash; the rectangle in which the items need to  be fully contained</li>
-<li><tt>options.overlapping: <a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt> &mdash; the rectangle with which the items  need to at least partly overlap</li>
+<li><tt>options.class: <tt>Function</tt></tt> &mdash; the constructor function of the item  type to match against</li>
+<li><tt>options.inside: <a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt> &mdash; the rectangle in which the items need  to be fully contained</li>
+<li><tt>options.overlapping: <a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt> &mdash; the rectangle with which the  items need to at least partly overlap</li>
 </ul>
 	
 <ul class="member-list">
@@ -3479,8 +3633,11 @@ function onMouseDown(event) {
 			<li>
 <tt>Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects</tt>&nbsp;&mdash;&nbsp;the list of matching descendant items
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<ul class="member-list">
@@ -3496,9 +3653,9 @@ function onMouseDown(event) {
 </div>
 
 	
-<div id="getitem-match" class="member">
+<div id="getitem-options" class="member">
 <div class="member-link">
-<a name="getitem-match" href="#getitem-match"><tt><b>getItem</b>(match)</tt></a>
+<a name="getitem-options" href="#getitem-options"><tt><b>getItem</b>(options)</tt></a>
 </div>
 <div class="member-description hidden">
 <div class="member-text">
@@ -3509,7 +3666,7 @@ function onMouseDown(event) {
 	<h4>Parameters:</h4>
 	
 	<li>
-<tt>match:</tt> 
+<tt>options:</tt> 
 <tt>Object</tt>⟋<tt>Function</tt>
 &mdash;&nbsp;the criteria to match against
 
@@ -3524,14 +3681,17 @@ function onMouseDown(event) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the first descendant item matching the given criteria
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<ul class="member-list">
 		<h4>See also:</h4>
 		
-			<li><tt><a href="../classes/Item.html#getitems-match"><tt>getItems(match)</tt></a></tt></li>
+			<li><tt><a href="../classes/Item.html#getitems-options"><tt>getItems(options)</tt></a></tt></li>
 		
 	</ul>
 
@@ -3575,8 +3735,11 @@ function onMouseDown(event) {
 			<li>
 <tt><tt>String</tt></tt>&nbsp;&mdash;&nbsp;the exported JSON data
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3607,6 +3770,18 @@ function onMouseDown(event) {
 </ul>
 
 	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>
+</li>
+
+		
+	</ul>
+
+
+
 	
 	
 </div>
@@ -3623,6 +3798,8 @@ function onMouseDown(event) {
 	<p>Exports the item with its content and child items as an SVG DOM.</p>
     <ul class="member-list">
 <h4>Options:</h4>
+<li><tt>options.bounds: <tt>String</tt>⟋<a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt> &mdash; the bounds of the area  to export, either as a string (<tt>&lsquo;view&rsquo;</tt>, <tt>content&rsquo;</tt>), or a  <a href="../classes/Rectangle.html"><tt>Rectangle</tt></a> object: <code>&#39;view&#39;</code> uses the view bounds,  <code>&#39;content&#39;</code> uses the stroke bounds of all content &mdash;&nbsp;default: <tt>&lsquo;view&rsquo;</tt></li>
+<li><tt>options.matrix: <a href="../classes/Matrix.html"><tt>Matrix</tt></a></tt> &mdash; the matrix with which  to transform the exported content: If <code>options.bounds</code> is set to  <code>&#39;view&#39;</code>, <code>paper.view.matrix</code> is used, for all other settings of  <code>options.bounds</code> the identity matrix is used. &mdash;&nbsp;default: <tt>paper.view.matrix</tt></li>
 <li><tt>options.asString: <tt>Boolean</tt></tt> &mdash; whether a SVG node or a  <code>String</code> is to be returned &mdash;&nbsp;default: <tt>false</tt></li>
 <li><tt>options.precision: <tt>Number</tt></tt> &mdash; the amount of fractional digits in  numbers used in SVG data &mdash;&nbsp;default: <tt>5</tt></li>
 <li><tt>options.matchShapes: <tt>Boolean</tt></tt> &mdash; whether path items should  tried to be converted to SVG shape items (rect, circle, ellipse,  line, polyline, polygon), if their geometries match &mdash;&nbsp;default: <tt>false</tt></li>
@@ -3646,10 +3823,13 @@ function onMouseDown(event) {
 		<h4>Returns:</h4>
 		
 			<li>
-<tt><tt>SVGElement</tt></tt>&nbsp;&mdash;&nbsp;the item converted to an SVG node
+<tt><tt>SVGElement</tt>⟋<tt>String</tt></tt>&nbsp;&mdash;&nbsp;the item converted to an SVG node or a <code>String</code> depending on <code>option.asString</code> value
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3700,8 +3880,11 @@ function onMouseDown(event) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the newly created Paper.js item containing the converted  SVG content
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3745,8 +3928,11 @@ function onMouseDown(event) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the newly created Paper.js item containing the converted  SVG content
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3785,8 +3971,11 @@ function onMouseDown(event) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the added item, or <code>null</code> if adding was not possible
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3830,8 +4019,11 @@ function onMouseDown(event) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the inserted item, or <code>null</code> if inserting was not possible
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3868,8 +4060,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt>Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects</tt>&nbsp;&mdash;&nbsp;the added items, or <code>null</code> if adding was not possible
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3913,8 +4108,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt>Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects</tt>&nbsp;&mdash;&nbsp;the inserted items, or <code>null</code> if inserted was not  possible
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3951,8 +4149,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the inserted item, or <code>null</code> if inserting was not possible
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -3989,8 +4190,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the inserted item, or <code>null</code> if inserting was not possible
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4009,6 +4213,8 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
     
 	
 	
+
+
 	
 	
 </div>
@@ -4026,6 +4232,8 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
     
 	
 	
+
+
 	
 	
 </div>
@@ -4033,80 +4241,22 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 </div>
 
 	
-<div id="appendtop-item" class="member">
+<div id="addto-owner" class="member">
 <div class="member-link">
-<a name="appendtop-item" href="#appendtop-item"><tt><b>appendTop</b>(item)</tt></a>
+<a name="addto-owner" href="#addto-owner"><tt><b>addTo</b>(owner)</tt></a>
 </div>
 <div class="member-description hidden">
 <div class="member-text">
-	<p>Inserts the specified item as a child of this item by appending it to the list of children and moving it above all other children. You can use this function for groups, compound paths and layers.</p>
+	<p>Adds it to the specified owner, which can be either a <a href="../classes/Item.html"><tt>Item</tt></a> or a <a href="../classes/Project.html"><tt>Project</tt></a>.</p>
     
 	
 <ul class="member-list">
 	<h4>Parameters:</h4>
 	
 	<li>
-<tt>item:</tt> 
-<a href="../classes/Item.html"><tt>Item</tt></a>
-&mdash;&nbsp;the item to be appended as a child
-
-</li>
-	
-</ul>
-
-	
-	
-	
-</div>
-</div>
-</div>
-
-	
-<div id="appendbottom-item" class="member">
-<div class="member-link">
-<a name="appendbottom-item" href="#appendbottom-item"><tt><b>appendBottom</b>(item)</tt></a>
-</div>
-<div class="member-description hidden">
-<div class="member-text">
-	<p>Inserts the specified item as a child of this item by appending it to the list of children and moving it below all other children. You can use this function for groups, compound paths and layers.</p>
-    
-	
-<ul class="member-list">
-	<h4>Parameters:</h4>
-	
-	<li>
-<tt>item:</tt> 
-<a href="../classes/Item.html"><tt>Item</tt></a>
-&mdash;&nbsp;the item to be appended as a child
-
-</li>
-	
-</ul>
-
-	
-	
-	
-</div>
-</div>
-</div>
-
-	
-<div id="moveabove-item" class="member">
-<div class="member-link">
-<a name="moveabove-item" href="#moveabove-item"><tt><b>moveAbove</b>(item)</tt></a>
-</div>
-<div class="member-description hidden">
-<div class="member-text">
-	<p>Moves this item above the specified item.</p>
-    
-	
-<ul class="member-list">
-	<h4>Parameters:</h4>
-	
-	<li>
-<tt>item:</tt> 
-<a href="../classes/Item.html"><tt>Item</tt></a>
-&mdash;&nbsp;the item above which it should be moved
+<tt>owner:</tt> 
+<a href="../classes/Project.html"><tt>Project</tt></a>⟋<a href="../classes/Layer.html"><tt>Layer</tt></a>⟋<a href="../classes/Group.html"><tt>Group</tt></a>⟋<a href="../classes/CompoundPath.html"><tt>CompoundPath</tt></a>
+&mdash;&nbsp;the item or project to add the item to
 
 </li>
 	
@@ -4117,48 +4267,13 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 		<h4>Returns:</h4>
 		
 			<li>
-<tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if it was moved, <tt>false</tt> otherwise
+<tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the item itself, if it was successfully added
 </li>
+
 		
 	</ul>
 
-	
-	
-</div>
-</div>
-</div>
 
-	
-<div id="movebelow-item" class="member">
-<div class="member-link">
-<a name="movebelow-item" href="#movebelow-item"><tt><b>moveBelow</b>(item)</tt></a>
-</div>
-<div class="member-description hidden">
-<div class="member-text">
-	<p>Moves the item below the specified item.</p>
-    
-	
-<ul class="member-list">
-	<h4>Parameters:</h4>
-	
-	<li>
-<tt>item:</tt> 
-<a href="../classes/Item.html"><tt>Item</tt></a>
-&mdash;&nbsp;the item below which it should be moved
-
-</li>
-	
-</ul>
-
-	
-	<ul class="member-list">
-		<h4>Returns:</h4>
-		
-			<li>
-<tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if it was moved, <tt>false</tt> otherwise
-</li>
-		
-	</ul>
 
 	
 	
@@ -4173,7 +4288,7 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 </div>
 <div class="member-description hidden">
 <div class="member-text">
-	<p>When passed a project, copies the item to the project, or duplicates it within the same project. When passed an item, copies the item into the specified item.</p>
+	<p>Clones the item and adds it to the specified owner, which can be either a <a href="../classes/Item.html"><tt>Item</tt></a> or a <a href="../classes/Project.html"><tt>Project</tt></a>.</p>
     
 	
 <ul class="member-list">
@@ -4193,10 +4308,13 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 		<h4>Returns:</h4>
 		
 			<li>
-<tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the new copy of the item
+<tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the new copy of the item, if it was successfully added
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4233,8 +4351,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;the reduced item
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4259,8 +4380,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item was removed, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4283,8 +4407,8 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 	
 	<li>
 <tt>item:</tt> 
-
-
+<a href="../classes/Item.html"><tt>Item</tt></a>
+&mdash;&nbsp;the item that will replace this item
 
 </li>
 	
@@ -4297,8 +4421,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item was replaced, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4323,8 +4450,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt>Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects</tt>&nbsp;&mdash;&nbsp;an array containing the removed items
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4368,8 +4498,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt>Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects</tt>&nbsp;&mdash;&nbsp;an array containing the removed items
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4388,6 +4521,8 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
     
 	
 	
+
+
 	
 	
 </div>
@@ -4399,22 +4534,37 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 
 <div id="isempty" class="member">
 <div class="member-link">
-<a name="isempty" href="#isempty"><tt><b>isEmpty</b>()</tt></a>
+<a name="isempty" href="#isempty"><tt><b>isEmpty</b>([recursively])</tt></a>
 </div>
 <div class="member-description hidden">
 <div class="member-text">
 	<p>Specifies whether the item has any content or not. The meaning of what content is differs from type to type. For example, a <a href="../classes/Group.html"><tt>Group</tt></a> with no children, a <a href="../classes/TextItem.html"><tt>TextItem</tt></a> with no text content and a <a href="../classes/Path.html"><tt>Path</tt></a> with no segments all are considered empty.</p>
     
 	
+<ul class="member-list">
+	<h4>Parameters:</h4>
+	
+	<li>
+<tt>recursively:</tt> 
+<tt>Boolean</tt>
+&mdash;&nbsp;whether an item with children should be considered empty if all its descendants are empty
+&mdash;&nbsp;optional, default: <tt>false</tt>
+</li>
+	
+</ul>
+
 	
 	<ul class="member-list">
 		<h4>Returns:</h4>
 		
 			<li>
-<tt></tt>&nbsp;&mdash;&nbsp;Boolean
+<tt><tt>Boolean</tt></tt>
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4441,8 +4591,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item has a fill, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4467,8 +4620,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item has a stroke, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4493,8 +4649,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item has a shadow, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4521,8 +4680,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> it has one or more children, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4547,8 +4709,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item is inserted into the scene graph, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4585,8 +4750,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if it is above the specified item, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4623,8 +4791,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if it is below the specified item, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4661,8 +4832,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if it is the parent of the item, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4699,8 +4873,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> it is a child of the item, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4737,8 +4914,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if it is inside the specified item, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4775,8 +4955,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item is an ancestor of the specified item, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4813,8 +4996,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item is aa sibling of the specified item, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4851,8 +5037,11 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the items are grouped together, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -4885,6 +5074,8 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 </ul>
 
 	
+
+
 	
 	
 </div>
@@ -4922,6 +5113,8 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 </ul>
 
 	
+
+
 	
 	<ul class="member-list">
 		<h4>See also:</h4>
@@ -4938,7 +5131,7 @@ Array of <a href="../classes/Item.html"><tt>Item</tt></a> objects
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-41">
+<script type="text/paperscript" canvas="canvas-42">
 // Create a rectangle shaped path with its top left
 // point at {x: 80, y: 25} and a size of {width: 50, height: 50}:
 var path = new Path.Rectangle(new Point(80, 25), new Size(50, 50));
@@ -4947,7 +5140,7 @@ path.fillColor = 'black';
 // Rotate the path by 30 degrees:
 path.rotate(30);
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-41"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-42"></canvas></div>
 </div>
 
 
@@ -4959,7 +5152,7 @@ path.rotate(30);
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-42">
+<script type="text/paperscript" canvas="canvas-43">
 // Create a rectangle shaped path with its top left
 // point at {x: 175, y: 50} and a size of {width: 100, height: 100}:
 var topLeft = new Point(175, 50);
@@ -4981,7 +5174,7 @@ function onFrame(event) {
     path.rotate(3, view.center);
 }
 </script>
-<div class="canvas"><canvas width="516" height="200" id="canvas-42"></canvas></div>
+<div class="canvas"><canvas width="516" height="200" id="canvas-43"></canvas></div>
 </div>
 
 
@@ -5019,32 +5212,10 @@ function onFrame(event) {
 </ul>
 
 	
+
+
 	
 	<h4>Example:<span class="description">Scaling an item from its center point:</span></h4>
-
-<div class="paperscript split">
-
-<div class="buttons">
-<div class="button run">Run</div>
-</div>
-
-<script type="text/paperscript" canvas="canvas-43">
-// Create a circle shaped path at { x: 80, y: 50 }
-// with a radius of 20:
-var circle = new Path.Circle({
-    center: [80, 50],
-    radius: 20,
-    fillColor: 'red'
-});
-
-// Scale the path by 150% from its center point
-circle.scale(1.5);
-</script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-43"></canvas></div>
-</div>
-
-
-<h4>Example:<span class="description">Scaling an item from a specific point:</span></h4>
 
 <div class="paperscript split">
 
@@ -5061,10 +5232,34 @@ var circle = new Path.Circle({
     fillColor: 'red'
 });
 
+// Scale the path by 150% from its center point
+circle.scale(1.5);
+</script>
+<div class="canvas"><canvas width="516" height="100" id="canvas-44"></canvas></div>
+</div>
+
+
+<h4>Example:<span class="description">Scaling an item from a specific point:</span></h4>
+
+<div class="paperscript split">
+
+<div class="buttons">
+<div class="button run">Run</div>
+</div>
+
+<script type="text/paperscript" canvas="canvas-45">
+// Create a circle shaped path at { x: 80, y: 50 }
+// with a radius of 20:
+var circle = new Path.Circle({
+    center: [80, 50],
+    radius: 20,
+    fillColor: 'red'
+});
+
 // Scale the path 150% from its bottom left corner
 circle.scale(1.5, circle.bounds.bottomLeft);
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-44"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-45"></canvas></div>
 </div>
 
 
@@ -5109,6 +5304,8 @@ circle.scale(1.5, circle.bounds.bottomLeft);
 </ul>
 
 	
+
+
 	
 	<h4>Example:<span class="description">Scaling an item horizontally by 300%:</span></h4>
 
@@ -5118,7 +5315,7 @@ circle.scale(1.5, circle.bounds.bottomLeft);
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-45">
+<script type="text/paperscript" canvas="canvas-46">
 // Create a circle shaped path at { x: 100, y: 50 }
 // with a radius of 20:
 var circle = new Path.Circle({
@@ -5130,7 +5327,7 @@ var circle = new Path.Circle({
 // Scale the path horizontally by 300%
 circle.scale(3, 1);
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-45"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-46"></canvas></div>
 </div>
 
 
@@ -5154,7 +5351,7 @@ circle.scale(3, 1);
 	<li>
 <tt>shear:</tt> 
 <a href="../classes/Point.html"><tt>Point</tt></a>
-&mdash;&nbsp;the horziontal and vertical shear factors as a point
+&mdash;&nbsp;the horizontal and vertical shear factors as a point
 
 </li>
 	
@@ -5168,6 +5365,8 @@ circle.scale(3, 1);
 </ul>
 
 	
+
+
 	
 	<ul class="member-list">
 		<h4>See also:</h4>
@@ -5218,6 +5417,8 @@ circle.scale(3, 1);
 </ul>
 
 	
+
+
 	
 	<ul class="member-list">
 		<h4>See also:</h4>
@@ -5247,7 +5448,7 @@ circle.scale(3, 1);
 	<li>
 <tt>skew:</tt> 
 <a href="../classes/Point.html"><tt>Point</tt></a>
-&mdash;&nbsp;the horziontal and vertical skew angles in degrees
+&mdash;&nbsp;the horizontal and vertical skew angles in degrees
 
 </li>
 	
@@ -5261,6 +5462,8 @@ circle.scale(3, 1);
 </ul>
 
 	
+
+
 	
 	<ul class="member-list">
 		<h4>See also:</h4>
@@ -5311,6 +5514,8 @@ circle.scale(3, 1);
 </ul>
 
 	
+
+
 	
 	<ul class="member-list">
 		<h4>See also:</h4>
@@ -5347,6 +5552,8 @@ circle.scale(3, 1);
 </ul>
 
 	
+
+
 	
 	
 </div>
@@ -5382,8 +5589,11 @@ circle.scale(3, 1);
 			<li>
 <tt><a href="../classes/Point.html"><tt>Point</tt></a></tt>&nbsp;&mdash;&nbsp;the transformed point as a new instance
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -5420,8 +5630,11 @@ circle.scale(3, 1);
 			<li>
 <tt><a href="../classes/Point.html"><tt>Point</tt></a></tt>&nbsp;&mdash;&nbsp;the transformed point as a new instance
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -5458,8 +5671,11 @@ circle.scale(3, 1);
 			<li>
 <tt><a href="../classes/Point.html"><tt>Point</tt></a></tt>&nbsp;&mdash;&nbsp;the transformed point as a new instance
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -5496,8 +5712,11 @@ circle.scale(3, 1);
 			<li>
 <tt><a href="../classes/Point.html"><tt>Point</tt></a></tt>&nbsp;&mdash;&nbsp;the transformed point as a new instance
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -5535,41 +5754,10 @@ circle.scale(3, 1);
 </ul>
 
 	
+
+
 	
 	<h4>Example:<span class="description">Fitting an item to the bounding rectangle of another item's bounding rectangle:</span></h4>
-
-<div class="paperscript split">
-
-<div class="buttons">
-<div class="button run">Run</div>
-</div>
-
-<script type="text/paperscript" canvas="canvas-46">
-// Create a rectangle shaped path with its top left corner
-// at {x: 80, y: 25} and a size of {width: 75, height: 50}:
-var path = new Path.Rectangle({
-    point: [80, 25],
-    size: [75, 50],
-    fillColor: 'black'
-});
-
-// Create a circle shaped path with its center at {x: 80, y: 50}
-// and a radius of 30.
-var circlePath = new Path.Circle({
-    center: [80, 50],
-    radius: 30,
-    fillColor: 'red'
-});
-
-// Fit the circlePath to the bounding rectangle of
-// the rectangular path:
-circlePath.fitBounds(path.bounds);
-</script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-46"></canvas></div>
-</div>
-
-
-<h4>Example:<span class="description">Fitting an item to the bounding rectangle of another item's bounding rectangle with the fill parameter set to true:</span></h4>
 
 <div class="paperscript split">
 
@@ -5596,9 +5784,42 @@ var circlePath = new Path.Circle({
 
 // Fit the circlePath to the bounding rectangle of
 // the rectangular path:
-circlePath.fitBounds(path.bounds, true);
+circlePath.fitBounds(path.bounds);
 </script>
 <div class="canvas"><canvas width="516" height="100" id="canvas-47"></canvas></div>
+</div>
+
+
+<h4>Example:<span class="description">Fitting an item to the bounding rectangle of another item's bounding rectangle with the fill parameter set to true:</span></h4>
+
+<div class="paperscript split">
+
+<div class="buttons">
+<div class="button run">Run</div>
+</div>
+
+<script type="text/paperscript" canvas="canvas-48">
+// Create a rectangle shaped path with its top left corner
+// at {x: 80, y: 25} and a size of {width: 75, height: 50}:
+var path = new Path.Rectangle({
+    point: [80, 25],
+    size: [75, 50],
+    fillColor: 'black'
+});
+
+// Create a circle shaped path with its center at {x: 80, y: 50}
+// and a radius of 30.
+var circlePath = new Path.Circle({
+    center: [80, 50],
+    radius: 30,
+    fillColor: 'red'
+});
+
+// Fit the circlePath to the bounding rectangle of
+// the rectangular path:
+circlePath.fitBounds(path.bounds, true);
+</script>
+<div class="canvas"><canvas width="516" height="100" id="canvas-48"></canvas></div>
 </div>
 
 
@@ -5610,7 +5831,7 @@ circlePath.fitBounds(path.bounds, true);
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-48">
+<script type="text/paperscript" canvas="canvas-49">
 var path = new Path.Circle({
     center: [80, 50],
     radius: 30,
@@ -5620,7 +5841,7 @@ var path = new Path.Circle({
 // Fit the path to the bounding rectangle of the view:
 path.fitBounds(view.bounds);
 </script>
-<div class="canvas"><canvas width="516" height="200" id="canvas-48"></canvas></div>
+<div class="canvas"><canvas width="516" height="200" id="canvas-49"></canvas></div>
 </div>
 
 
@@ -5666,8 +5887,11 @@ path.fitBounds(view.bounds);
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;this item itself, so calls can be chained
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<h4>Example:<span class="description">Change the fill color of the path to red when the mouse enters its shape and back to black again, when it leaves its shape.</span></h4>
@@ -5678,7 +5902,7 @@ path.fitBounds(view.bounds);
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-49">
+<script type="text/paperscript" canvas="canvas-50">
 // Create a circle shaped path at the center of the view:
 var path = new Path.Circle({
     center: view.center,
@@ -5696,7 +5920,7 @@ path.on('mouseleave', function() {
     this.fillColor = 'black';
 });
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-49"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-50"></canvas></div>
 </div>
 
 
@@ -5720,7 +5944,7 @@ path.on('mouseleave', function() {
 	<li>
 <tt>object:</tt> 
 <tt>Object</tt>
-&mdash;&nbsp;an object literal containing one or more of the  following properties: <tt>frame</tt>, <tt>mousedown</tt>, <tt>mouseup</tt>, <tt>mousedrag</tt>, <tt>click</tt>, <tt>doubleclick</tt>, <tt>mousemove</tt>, <tt>mouseenter</tt>, <tt>mouseleave</tt>
+&mdash;&nbsp;an object containing one or more of the following  properties: <tt>frame</tt>, <tt>mousedown</tt>, <tt>mouseup</tt>, <tt>mousedrag</tt>, <tt>click</tt>, <tt>doubleclick</tt>, <tt>mousemove</tt>, <tt>mouseenter</tt>, <tt>mouseleave</tt>
 
 </li>
 	
@@ -5733,8 +5957,11 @@ path.on('mouseleave', function() {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;this item itself, so calls can be chained
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<h4>Example:<span class="description">Change the fill color of the path to red when the mouse enters its shape and back to black again, when it leaves its shape.</span></h4>
@@ -5745,7 +5972,7 @@ path.on('mouseleave', function() {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-50">
+<script type="text/paperscript" canvas="canvas-51">
 // Create a circle shaped path at the center of the view:
 var path = new Path.Circle({
     center: view.center,
@@ -5763,7 +5990,7 @@ path.on({
     }
 });
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-50"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-51"></canvas></div>
 </div>
 
 
@@ -5775,7 +6002,7 @@ path.on({
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-51">
+<script type="text/paperscript" canvas="canvas-52">
 var pathHandlers = {
     mouseenter: function(event) {
         this.fillColor = 'red';
@@ -5798,7 +6025,7 @@ function onMouseDown(event) {
     path.on(pathHandlers);
 }
 </script>
-<div class="canvas"><canvas width="516" height="100" id="canvas-51"></canvas></div>
+<div class="canvas"><canvas width="516" height="100" id="canvas-52"></canvas></div>
 </div>
 
 
@@ -5842,8 +6069,11 @@ function onMouseDown(event) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;this item itself, so calls can be chained
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -5867,7 +6097,7 @@ function onMouseDown(event) {
 	<li>
 <tt>object:</tt> 
 <tt>Object</tt>
-&mdash;&nbsp;an object literal containing one or more of the  following properties: <tt>frame</tt>, <tt>mousedown</tt>, <tt>mouseup</tt>, <tt>mousedrag</tt>, <tt>click</tt>, <tt>doubleclick</tt>, <tt>mousemove</tt>, <tt>mouseenter</tt>, <tt>mouseleave</tt>
+&mdash;&nbsp;an object containing one or more of the following  properties: <tt>frame</tt>, <tt>mousedown</tt>, <tt>mouseup</tt>, <tt>mousedrag</tt>, <tt>click</tt>, <tt>doubleclick</tt>, <tt>mousemove</tt>, <tt>mouseenter</tt>, <tt>mouseleave</tt>
 
 </li>
 	
@@ -5880,8 +6110,11 @@ function onMouseDown(event) {
 			<li>
 <tt><a href="../classes/Item.html"><tt>Item</tt></a></tt>&nbsp;&mdash;&nbsp;this item itself, so calls can be chained
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -5925,8 +6158,11 @@ function onMouseDown(event) {
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the event had listeners, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -5963,8 +6199,11 @@ function onMouseDown(event) {
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the item has one or more event handlers of the specified type, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -6003,6 +6242,8 @@ function onMouseDown(event) {
 </ul>
 
 	
+
+
 	
 	<h4>Example:<span class="description">Click and drag below:</span></h4>
 
@@ -6012,7 +6253,7 @@ function onMouseDown(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-52">
+<script type="text/paperscript" canvas="canvas-53">
 function onMouseDrag(event) {
     // Create a circle shaped path at the mouse position,
     // with a radius of 10:
@@ -6029,7 +6270,7 @@ function onMouseDrag(event) {
     });
 }
 </script>
-<div class="canvas"><canvas width="516" height="200" id="canvas-52"></canvas></div>
+<div class="canvas"><canvas width="516" height="200" id="canvas-53"></canvas></div>
 </div>
 
 
@@ -6048,6 +6289,8 @@ function onMouseDrag(event) {
     
 	
 	
+
+
 	
 	<h4>Example:<span class="description">Move your mouse below:</span></h4>
 
@@ -6057,7 +6300,7 @@ function onMouseDrag(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-53">
+<script type="text/paperscript" canvas="canvas-54">
 function onMouseMove(event) {
     // Create a circle shaped path at the mouse position,
     // with a radius of 10:
@@ -6071,7 +6314,7 @@ function onMouseMove(event) {
     path.removeOnMove();
 }
 </script>
-<div class="canvas"><canvas width="516" height="200" id="canvas-53"></canvas></div>
+<div class="canvas"><canvas width="516" height="200" id="canvas-54"></canvas></div>
 </div>
 
 
@@ -6090,6 +6333,8 @@ function onMouseMove(event) {
     
 	
 	
+
+
 	
 	<h4>Example:<span class="description">Click a few times below:</span></h4>
 
@@ -6099,7 +6344,7 @@ function onMouseMove(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-54">
+<script type="text/paperscript" canvas="canvas-55">
 function onMouseDown(event) {
     // Create a circle shaped path at the mouse position,
     // with a radius of 10:
@@ -6113,7 +6358,7 @@ function onMouseDown(event) {
     path.removeOnDown();
 }
 </script>
-<div class="canvas"><canvas width="516" height="200" id="canvas-54"></canvas></div>
+<div class="canvas"><canvas width="516" height="200" id="canvas-55"></canvas></div>
 </div>
 
 
@@ -6132,6 +6377,8 @@ function onMouseDown(event) {
     
 	
 	
+
+
 	
 	<h4>Example:<span class="description">Click and drag below:</span></h4>
 
@@ -6141,7 +6388,7 @@ function onMouseDown(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-55">
+<script type="text/paperscript" canvas="canvas-56">
 function onMouseDrag(event) {
     // Create a circle shaped path at the mouse position,
     // with a radius of 10:
@@ -6155,7 +6402,7 @@ function onMouseDrag(event) {
     path.removeOnDrag();
 }
 </script>
-<div class="canvas"><canvas width="516" height="200" id="canvas-55"></canvas></div>
+<div class="canvas"><canvas width="516" height="200" id="canvas-56"></canvas></div>
 </div>
 
 
@@ -6174,6 +6421,8 @@ function onMouseDrag(event) {
     
 	
 	
+
+
 	
 	<h4>Example:<span class="description">Click a few times below:</span></h4>
 
@@ -6183,7 +6432,7 @@ function onMouseDrag(event) {
 <div class="button run">Run</div>
 </div>
 
-<script type="text/paperscript" canvas="canvas-56">
+<script type="text/paperscript" canvas="canvas-57">
 function onMouseDown(event) {
     // Create a circle shaped path at the mouse position,
     // with a radius of 10:
@@ -6197,7 +6446,7 @@ function onMouseDown(event) {
     path.removeOnUp();
 }
 </script>
-<div class="canvas"><canvas width="516" height="200" id="canvas-56"></canvas></div>
+<div class="canvas"><canvas width="516" height="200" id="canvas-57"></canvas></div>
 </div>
 
 
@@ -6206,31 +6455,44 @@ function onMouseDown(event) {
 </div>
 
 	
-<div id="hittestall-point" class="member">
+<h3>Tweening Functions</h3>
+
+<div id="tween-from-to-options" class="member">
 <div class="member-link">
-<a name="hittestall-point" href="#hittestall-point"><tt><b>hitTestAll</b>(point[, options])</tt></a>
+<a name="tween-from-to-options" href="#tween-from-to-options"><tt><b>tween</b>(from, to, options)</tt></a>
 </div>
 <div class="member-description hidden">
 <div class="member-text">
-	<p>Performs a hit-test on the item and its children (if it is a <a href="../classes/Group.html"><tt>Group</tt></a> or <a href="../classes/Layer.html"><tt>Layer</tt></a>) at the location of the specified point, returning all found hits.</p>
-<p>The options object allows you to control the specifics of the hit- test. See <a href="../classes/Item.html#hittest-point"><tt>hitTest(point[, options])</tt></a> for a list of all options.</p>
-    
+	<p>Tween item between two states.</p>
+    <ul class="member-list">
+<h4>Options:</h4>
+<li><tt>options.duration: <tt>Number</tt></tt> &mdash; the duration of the tweening</li>
+<li><tt>options.easing: <tt>Function</tt>⟋<tt>String</tt></tt> &mdash; an easing function or the type of the easing: <tt>&lsquo;linear&rsquo; &lsquo;easeInQuad&rsquo; &lsquo;easeOutQuad&rsquo; &lsquo;easeInOutQuad&rsquo; &lsquo;easeInCubic&rsquo; &lsquo;easeOutCubic&rsquo; &lsquo;easeInOutCubic&rsquo; &lsquo;easeInQuart&rsquo; &lsquo;easeOutQuart&rsquo; &lsquo;easeInOutQuart&rsquo; &lsquo;easeInQuint&rsquo; &lsquo;easeOutQuint&rsquo; &lsquo;easeInOutQuint&rsquo;</tt> &mdash;&nbsp;default: <tt>&lsquo;linear&rsquo;</tt></li>
+<li><tt>options.start: <tt>Boolean</tt></tt> &mdash; whether to start tweening automatically &mdash;&nbsp;default: <tt>true</tt></li>
+</ul>
 	
 <ul class="member-list">
 	<h4>Parameters:</h4>
 	
 	<li>
-<tt>point:</tt> 
-<a href="../classes/Point.html"><tt>Point</tt></a>
-&mdash;&nbsp;the point where the hit-test should be performed
+<tt>from:</tt> 
+<tt>Object</tt>
+&mdash;&nbsp;the state at the start of the tweening
+
+</li>
+	
+	<li>
+<tt>to:</tt> 
+<tt>Object</tt>
+&mdash;&nbsp;the state at the end of the tweening
 
 </li>
 	
 	<li>
 <tt>options:</tt> 
-<tt>Object</tt>
+<tt>Object</tt>⟋<tt>Number</tt>
+&mdash;&nbsp;the options or the duration
 
-&mdash;&nbsp;optional, default: <tt>{ fill: true, stroke: true, segments: true,  tolerance: settings.hitTolerance }</tt>
 </li>
 	
 </ul>
@@ -6240,20 +6502,349 @@ function onMouseDown(event) {
 		<h4>Returns:</h4>
 		
 			<li>
-<tt>Array of <a href="../classes/HitResult.html"><tt>HitResult</tt></a> objects</tt>&nbsp;&mdash;&nbsp;hit result objects for all hits, describing what  exactly was hit or <code>null</code> if nothing was hit
+<tt><a href="../classes/Tween.html"><tt>Tween</tt></a></tt>
 </li>
+
 		
 	</ul>
+
+
+
+	
+	<h4>Example:<span class="description">Tween fillColor:</span></h4>
+
+<div class="paperscript split">
+
+<div class="buttons">
+<div class="button run">Run</div>
+</div>
+
+<script type="text/paperscript" canvas="canvas-58">
+var path = new Path.Circle({
+    radius: view.bounds.height * 0.4,
+    center: view.center
+});
+path.tween(
+    { fillColor: 'blue' },
+    { fillColor: 'red' },
+    3000
+);
+</script>
+<div class="canvas"><canvas width="516" height="100" id="canvas-58"></canvas></div>
+</div>
+
+
+<h4>Example:<span class="description">Tween rotation:</span></h4>
+
+<div class="paperscript split">
+
+<div class="buttons">
+<div class="button run">Run</div>
+</div>
+
+<script type="text/paperscript" canvas="canvas-59">
+var path = new Shape.Rectangle({
+    fillColor: 'red',
+    center: [50, view.center.y],
+    size: [60, 60]
+});
+path.tween({
+    rotation: 180,
+    'position.x': view.bounds.width - 50,
+    'fillColor.hue': '+= 90'
+}, {
+    easing: 'easeInOutCubic',
+    duration: 2000
+});
+</script>
+<div class="canvas"><canvas width="516" height="100" id="canvas-59"></canvas></div>
+</div>
+
+
+</div>
+</div>
+</div>
+
+	
+<div id="tween-to-options" class="member">
+<div class="member-link">
+<a name="tween-to-options" href="#tween-to-options"><tt><b>tween</b>(to, options)</tt></a>
+</div>
+<div class="member-description hidden">
+<div class="member-text">
+	<p>Tween item to a state.</p>
+    
+	
+<ul class="member-list">
+	<h4>Parameters:</h4>
+	
+	<li>
+<tt>to:</tt> 
+<tt>Object</tt>
+&mdash;&nbsp;the state at the end of the tweening
+
+</li>
+	
+	<li>
+<tt>options:</tt> 
+<tt>Object</tt>⟋<tt>Number</tt>
+&mdash;&nbsp;the options or the duration
+
+</li>
+	
+</ul>
+
+	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Tween.html"><tt>Tween</tt></a></tt>
+</li>
+
+		
+	</ul>
+
+
 
 	
 	<ul class="member-list">
 		<h4>See also:</h4>
 		
-			<li><tt><a href="../classes/Item.html#hittest-point"><tt>hitTest(point[, options])</tt></a>;</tt></li>
+			<li><tt><a href="../classes/Item.html#tween-from-to-options"><tt>item.tween(from, to, options)</tt></a></tt></li>
+		
+	</ul>
+
+	<h4>Example:<span class="description">Tween a nested property with relative values</span></h4>
+
+<div class="paperscript split">
+
+<div class="buttons">
+<div class="button run">Run</div>
+</div>
+
+<script type="text/paperscript" canvas="canvas-60">
+var path = new Path.Rectangle({
+    size: [100, 100],
+    position: view.center,
+    fillColor: 'red',
+});
+
+var delta = { x: path.bounds.width / 2, y: 0 };
+
+path.tween({
+    'segments[1].point': ['+=', delta],
+    'segments[2].point.x': '-= 50'
+}, 3000);
+</script>
+<div class="canvas"><canvas width="516" height="200" id="canvas-60"></canvas></div>
+</div>
+
+
+</div>
+</div>
+</div>
+
+	
+<div id="tween-options" class="member">
+<div class="member-link">
+<a name="tween-options" href="#tween-options"><tt><b>tween</b>(options)</tt></a>
+</div>
+<div class="member-description hidden">
+<div class="member-text">
+	<p>Tween item.</p>
+    
+	
+<ul class="member-list">
+	<h4>Parameters:</h4>
+	
+	<li>
+<tt>options:</tt> 
+<tt>Object</tt>⟋<tt>Number</tt>
+&mdash;&nbsp;the options or the duration
+
+</li>
+	
+</ul>
+
+	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Tween.html"><tt>Tween</tt></a></tt>
+</li>
+
+		
+	</ul>
+
+
+
+	
+	<ul class="member-list">
+		<h4>See also:</h4>
+		
+			<li><tt><a href="../classes/Item.html#tween-from-to-options"><tt>item.tween(from, to, options)</tt></a></tt></li>
+		
+	</ul>
+
+	<h4>Example:<span class="description">Start an empty tween and just use the update callback:</span></h4>
+
+<div class="paperscript split">
+
+<div class="buttons">
+<div class="button run">Run</div>
+</div>
+
+<script type="text/paperscript" canvas="canvas-61">
+var path = new Path.Circle({
+    fillColor: 'blue',
+    radius: view.bounds.height * 0.4,
+    center: view.center,
+});
+var pathFrom = path.clone({ insert: false })
+var pathTo = new Path.Rectangle({
+    position: view.center,
+    rectangle: path.bounds,
+    insert: false
+});
+path.tween(2000).onUpdate = function(event) {
+    path.interpolate(pathFrom, pathTo, event.factor)
+};
+</script>
+<div class="canvas"><canvas width="516" height="100" id="canvas-61"></canvas></div>
+</div>
+
+
+</div>
+</div>
+</div>
+
+	
+<div id="tweento-to-options" class="member">
+<div class="member-link">
+<a name="tweento-to-options" href="#tweento-to-options"><tt><b>tweenTo</b>(to, options)</tt></a>
+</div>
+<div class="member-description hidden">
+<div class="member-text">
+	<p>Tween item to a state.</p>
+    
+	
+<ul class="member-list">
+	<h4>Parameters:</h4>
+	
+	<li>
+<tt>to:</tt> 
+<tt>Object</tt>
+&mdash;&nbsp;the state at the end of the tweening
+
+</li>
+	
+	<li>
+<tt>options:</tt> 
+<tt>Object</tt>⟋<tt>Number</tt>
+&mdash;&nbsp;the options or the duration
+
+</li>
+	
+</ul>
+
+	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Tween.html"><tt>Tween</tt></a></tt>
+</li>
+
+		
+	</ul>
+
+
+
+	
+	<ul class="member-list">
+		<h4>See also:</h4>
+		
+			<li><tt><a href="../classes/Item.html#tween-to-options"><tt>item.tween(to, options)</tt></a></tt></li>
 		
 	</ul>
 
 	
+</div>
+</div>
+</div>
+
+	
+<div id="tweenfrom-from-options" class="member">
+<div class="member-link">
+<a name="tweenfrom-from-options" href="#tweenfrom-from-options"><tt><b>tweenFrom</b>(from, options)</tt></a>
+</div>
+<div class="member-description hidden">
+<div class="member-text">
+	<p>Tween item from a state to its state before the tweening.</p>
+    
+	
+<ul class="member-list">
+	<h4>Parameters:</h4>
+	
+	<li>
+<tt>from:</tt> 
+<tt>Object</tt>
+&mdash;&nbsp;the state at the start of the tweening
+
+</li>
+	
+	<li>
+<tt>options:</tt> 
+<tt>Object</tt>⟋<tt>Number</tt>
+&mdash;&nbsp;the options or the duration
+
+</li>
+	
+</ul>
+
+	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Tween.html"><tt>Tween</tt></a></tt>
+</li>
+
+		
+	</ul>
+
+
+
+	
+	<ul class="member-list">
+		<h4>See also:</h4>
+		
+			<li><tt><a href="../classes/Item.html#tween-from-to-options"><tt>item.tween(from, to, options)</tt></a></tt></li>
+		
+	</ul>
+
+	<h4>Example:<span class="description">Tween fillColor from red to the path's initial fillColor:</span></h4>
+
+<div class="paperscript split">
+
+<div class="buttons">
+<div class="button run">Run</div>
+</div>
+
+<script type="text/paperscript" canvas="canvas-62">
+var path = new Path.Circle({
+    fillColor: 'blue',
+    radius: view.bounds.height * 0.4,
+    center: view.center
+});
+path.tweenFrom({ fillColor: 'red' }, { duration: 1000 });
+</script>
+<div class="canvas"><canvas width="516" height="100" id="canvas-62"></canvas></div>
+</div>
+
+
 </div>
 </div>
 </div>
@@ -6264,8 +6855,8 @@ function onMouseDown(event) {
 
 <!-- =========================== copyright notice ========================== -->
 <p class="footer">
-Paper.js v0.10.2<br>
-Copyright &#169; 2011—2016 <a href="http://www.lehni.org" target="_blank">J&uuml;rg Lehni</a> &amp; <a href="http://www.jonathanpuckey.com" target="_blank">Jonathan Puckey</a>. All Rights Reserved.</p>
+Paper.js v0.12.17<br>
+Copyright &#169; 2011—2022 <a href="http://www.lehni.org" target="_blank">J&uuml;rg Lehni</a> &amp; <a href="http://www.jonathanpuckey.com" target="_blank">Jonathan Puckey</a>. All Rights Reserved.</p>
 <div class="content-end"></div>
 
 

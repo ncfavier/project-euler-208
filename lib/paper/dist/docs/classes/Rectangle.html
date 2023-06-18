@@ -59,8 +59,11 @@
 			<li>
 <tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>
 </li>
+
 		
 	</ul>
+
+
 
     
     
@@ -97,8 +100,11 @@
 			<li>
 <tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>
 </li>
+
 		
 	</ul>
+
+
 
     
     <h4>Example:<span class="description">Create a rectangle between {x: 20, y: 20} and {x: 80, y:80}</span></h4>
@@ -171,8 +177,11 @@
 			<li>
 <tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>
 </li>
+
 		
 	</ul>
+
+
 
     
     
@@ -216,8 +225,11 @@
 			<li>
 <tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>
 </li>
+
 		
 	</ul>
+
+
 
     
     
@@ -226,9 +238,9 @@
 </div>
 	
 		
-<div id="rectangle-rt" class="member">
+<div id="rectangle-rectangle" class="member">
 <div class="member-link">
-<a name="rectangle-rt" href="#rectangle-rt"><tt><b>Rectangle</b>(rt)</tt></a>
+<a name="rectangle-rectangle" href="#rectangle-rectangle"><tt><b>Rectangle</b>(rectangle)</tt></a>
 </div>
 <div class="member-description hidden">
 <div class="member-text">
@@ -239,7 +251,7 @@
 	<h4>Parameters:</h4>
 	
 	<li>
-<tt>rt:</tt> 
+<tt>rectangle:</tt> 
 <a href="../classes/Rectangle.html"><tt>Rectangle</tt></a>
 
 
@@ -254,8 +266,11 @@
 			<li>
 <tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>
 </li>
+
 		
 	</ul>
+
+
 
     
     
@@ -814,6 +829,11 @@
 	
 	
 	
+		<ul class="member-list">
+			<h4>Default:</h4>
+			<li><tt>false</tt></li>
+		</ul>
+	
 	<ul class="member-list">
 		<h4>Type:</h4>
 		<li>
@@ -859,6 +879,47 @@ path.bounds.selected = true;
 		<h2>Methods</h2>
 		
 	
+<div id="set-values" class="member">
+<div class="member-link">
+<a name="set-values" href="#set-values"><tt><b>set</b>(...values)</tt></a>
+</div>
+<div class="member-description hidden">
+<div class="member-text">
+	<p>Sets the rectangle to the passed values. Note that any sequence of parameters that is supported by the various <a href="../classes/Rectangle.html"><tt>Rectangle</tt></a>() constructors also work for calls of <code>set()</code>.</p>
+    
+	
+<ul class="member-list">
+	<h4>Parameters:</h4>
+	
+	<li>
+<tt>values:</tt> 
+<tt>any value</tt>
+
+
+</li>
+	
+</ul>
+
+	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>
+</li>
+
+		
+	</ul>
+
+
+
+	
+	
+</div>
+</div>
+</div>
+
+	
 <div id="clone" class="member">
 <div class="member-link">
 <a name="clone" href="#clone"><tt><b>clone</b>()</tt></a>
@@ -869,6 +930,18 @@ path.bounds.selected = true;
     
 	
 	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>
+</li>
+
+		
+	</ul>
+
+
+
 	
 	
 </div>
@@ -904,8 +977,11 @@ path.bounds.selected = true;
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the rectangles are equal, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -930,8 +1006,11 @@ path.bounds.selected = true;
 			<li>
 <tt><tt>String</tt></tt>&nbsp;&mdash;&nbsp;a string representation of this rectangle
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -956,8 +1035,11 @@ path.bounds.selected = true;
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the rectangle is empty, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -996,8 +1078,11 @@ path.bounds.selected = true;
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the point is inside the rectangle&rsquo;s boundary, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<h4>Example:<span class="description">Checking whether the mouse position falls within the bounding rectangle of an item:</span></h4>
@@ -1063,8 +1148,11 @@ function onMouseMove(event) {
 			<li>
 <tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the rectangle entirely contains the specified rectangle, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<h4>Example:<span class="description">Checking whether the bounding box of one item is contained within that of another item:</span></h4>
@@ -1118,11 +1206,11 @@ function onMouseMove(event) {
 	
 <div id="intersects-rect" class="member">
 <div class="member-link">
-<a name="intersects-rect" href="#intersects-rect"><tt><b>intersects</b>(rect)</tt></a>
+<a name="intersects-rect" href="#intersects-rect"><tt><b>intersects</b>(rect[, epsilon])</tt></a>
 </div>
 <div class="member-description hidden">
 <div class="member-text">
-	<p>Tests if the interior of this rectangle intersects the interior of another rectangle. Rectangles just touching each other are considered as non-intersecting.</p>
+	<p>Tests if the interior of this rectangle intersects the interior of another rectangle. Rectangles just touching each other are considered as non-intersecting, except if a <code>epsilon</code> value is specified by which this rectangle&rsquo;s dimensions are increased before comparing.</p>
     
 	
 <ul class="member-list">
@@ -1135,6 +1223,13 @@ function onMouseMove(event) {
 
 </li>
 	
+	<li>
+<tt>epsilon:</tt> 
+<tt>Number</tt>
+&mdash;&nbsp;the epsilon against which to compare the  rectangle&rsquo;s dimensions
+&mdash;&nbsp;optional, default: <tt>0</tt>
+</li>
+	
 </ul>
 
 	
@@ -1142,10 +1237,13 @@ function onMouseMove(event) {
 		<h4>Returns:</h4>
 		
 			<li>
-<tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the rectangle and the specified rectangle intersect each other, <tt>false</tt> otherwise
+<tt><tt>Boolean</tt></tt>&nbsp;&mdash;&nbsp;<tt>true</tt> if the rectangle and the specified rectangle  intersect each other, <tt>false</tt> otherwise
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<h4>Example:<span class="description">Checking whether the bounding box of one item intersects with that of another item:</span></h4>
@@ -1227,8 +1325,11 @@ function onMouseMove(event) {
 			<li>
 <tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>&nbsp;&mdash;&nbsp;the largest rectangle contained in both the specified rectangle and in this rectangle
 </li>
+
 		
 	</ul>
+
+
 
 	
 	<h4>Example:<span class="description">Intersecting two rectangles and visualizing the result using rectangle shaped paths:</span></h4>
@@ -1303,8 +1404,11 @@ intersectionPath.fillColor = 'red';
 			<li>
 <tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>&nbsp;&mdash;&nbsp;the smallest rectangle containing both the specified rectangle and this rectangle
 </li>
+
 		
 	</ul>
+
+
 
 	
 	
@@ -1336,6 +1440,18 @@ intersectionPath.fillColor = 'red';
 </ul>
 
 	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>&nbsp;&mdash;&nbsp;the smallest rectangle that contains both the original rectangle and the specified point
+</li>
+
+		
+	</ul>
+
+
+
 	
 	
 </div>
@@ -1349,7 +1465,7 @@ intersectionPath.fillColor = 'red';
 </div>
 <div class="member-description hidden">
 <div class="member-text">
-	<p>Expands the rectangle by the specified amount in horizontal and vertical directions.</p>
+	<p>Returns a new rectangle expanded by the specified amount in horizontal and vertical directions.</p>
     
 	
 <ul class="member-list">
@@ -1365,6 +1481,18 @@ intersectionPath.fillColor = 'red';
 </ul>
 
 	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>&nbsp;&mdash;&nbsp;the expanded rectangle
+</li>
+
+		
+	</ul>
+
+
+
 	
 	
 </div>
@@ -1378,7 +1506,7 @@ intersectionPath.fillColor = 'red';
 </div>
 <div class="member-description hidden">
 <div class="member-text">
-	<p>Expands the rectangle by the specified amounts in horizontal and vertical directions.</p>
+	<p>Returns a new rectangle expanded by the specified amounts in horizontal and vertical directions.</p>
     
 	
 <ul class="member-list">
@@ -1401,6 +1529,18 @@ intersectionPath.fillColor = 'red';
 </ul>
 
 	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>&nbsp;&mdash;&nbsp;the expanded rectangle
+</li>
+
+		
+	</ul>
+
+
+
 	
 	
 </div>
@@ -1414,7 +1554,7 @@ intersectionPath.fillColor = 'red';
 </div>
 <div class="member-description hidden">
 <div class="member-text">
-	<p>Scales the rectangle by the specified amount from its center.</p>
+	<p>Returns a new rectangle scaled by the specified amount from its center.</p>
     
 	
 <ul class="member-list">
@@ -1430,6 +1570,18 @@ intersectionPath.fillColor = 'red';
 </ul>
 
 	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>&nbsp;&mdash;&nbsp;the scaled rectangle
+</li>
+
+		
+	</ul>
+
+
+
 	
 	
 </div>
@@ -1443,7 +1595,7 @@ intersectionPath.fillColor = 'red';
 </div>
 <div class="member-description hidden">
 <div class="member-text">
-	<p>Scales the rectangle in horizontal direction by the specified <code>hor</code> amount and in vertical direction by the specified <code>ver</code> amount from its center.</p>
+	<p>Returns a new rectangle scaled in horizontal direction by the specified <code>hor</code> amount and in vertical direction by the specified <code>ver</code> amount from its center.</p>
     
 	
 <ul class="member-list">
@@ -1466,6 +1618,18 @@ intersectionPath.fillColor = 'red';
 </ul>
 
 	
+	<ul class="member-list">
+		<h4>Returns:</h4>
+		
+			<li>
+<tt><a href="../classes/Rectangle.html"><tt>Rectangle</tt></a></tt>&nbsp;&mdash;&nbsp;the scaled rectangle
+</li>
+
+		
+	</ul>
+
+
+
 	
 	
 </div>
@@ -1481,8 +1645,8 @@ intersectionPath.fillColor = 'red';
 
 <!-- =========================== copyright notice ========================== -->
 <p class="footer">
-Paper.js v0.10.2<br>
-Copyright &#169; 2011—2016 <a href="http://www.lehni.org" target="_blank">J&uuml;rg Lehni</a> &amp; <a href="http://www.jonathanpuckey.com" target="_blank">Jonathan Puckey</a>. All Rights Reserved.</p>
+Paper.js v0.12.17<br>
+Copyright &#169; 2011—2022 <a href="http://www.lehni.org" target="_blank">J&uuml;rg Lehni</a> &amp; <a href="http://www.jonathanpuckey.com" target="_blank">Jonathan Puckey</a>. All Rights Reserved.</p>
 <div class="content-end"></div>
 
 
