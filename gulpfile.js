@@ -3,6 +3,7 @@
 
 var gulp    = require('gulp');                  // Gulp, of course
 var del     = require('del');                   // For deleting files
+var replace = require('gulp-replace');
 var connect = require('gulp-connect');          // Run a dev server
 
 // Nuke the /dist folder
@@ -13,6 +14,7 @@ gulp.task('clean', function () {
 // Copy static resources and assets to the /dist folder
 gulp.task('copy', function () {
     return gulp.src(['src/**/*.*', 'src/*.*', 'package.json'])
+        .pipe(replace('@GITHUB_URL@', process.env.GITHUB_URL ?? 'https://github.com/cemulate/project-euler-208'))
         .pipe(gulp.dest('dist'));
 });
 

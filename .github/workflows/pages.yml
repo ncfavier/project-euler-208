@@ -26,6 +26,8 @@ jobs:
     - uses: actions/setup-node@v3
 
     - name: Build
+      env:
+        GITHUB_URL: https://github.com/${{ github.repository }}
       run: |
         npm install
         npx gulp dist
