@@ -24,6 +24,7 @@
             <div class="top-bar-left">
                 <ul class="dropdown menu" data-dropdown-menu>
                     <li class="menu-text"><a href="https://projecteuler.net/problem=208">Project Euler 208</a></li>
+                    <li class="menu-text"><button class="button" data-open="help">What?</button></li>
                 </ul>
             </div>
             <div class="top-bar-right">
@@ -31,6 +32,51 @@
                     <li><a href="https://github.com/cemulate/project-euler-208">View on Github</a></li>
                 </ul>
             </div>
+        </div>
+
+        <div class="reveal" id="help" data-reveal>
+            <h1>Project Euler 208</h1>
+            <p>
+                This is a testbed for playing with the scenario of <a href="https://projecteuler.net/problem=208">Project Euler problem 208</a>,
+                generalised to arbitrary subdivisions of the circle.
+                <form method="get">
+                    <div class="input-group">
+                        <span class="input-group-label">n =</span>
+                        <input class="input-group-field" type="number" id="input-n" name="n" min="1">
+                        <div class="input-group-button">
+                            <input type="submit" class="button" value="Go">
+                        </div>
+                    </div>
+                </form>
+            </p>
+            <p>
+                It was originally made by <a href="https://github.com/cemulate">Chase Meadors</a> and modified by
+                <a href="https://github.com/ncfavier">Naïm Favier</a>.
+            </p>
+            <h4>Controls</h4>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><kbd>right →</kbd></td>
+                        <td>turn clockwise</td>
+                    </tr>
+                    <tr>
+                        <td><kbd>left ←</kbd></td>
+                        <td>turn counterclockwise</td>
+                    </tr>
+                    <tr>
+                        <td><kbd>r</kbd></td>
+                        <td>turn randomly</td>
+                    </tr>
+                    <tr>
+                        <td><kbd>space ␣</kbd></td>
+                        <td>close the loop</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
 
         <canvas id="canvas" style="display: block; width: 100%; height: 100%"></canvas>

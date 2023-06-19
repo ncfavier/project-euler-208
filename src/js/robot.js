@@ -28,16 +28,15 @@ function hue(dir) {
 function drawArc(a, b, c, aDir, cDir) {
     let p = new paper.Path.Arc(pt(a), pt(b), pt(c));
     p.strokeWidth = 0.06;
-    console.log(hue(aDir), hue(cDir));
     p.strokeColor = {
         gradient: {
             stops: [{
                 hue: hue(aDir),
-                saturation: 1,
+                saturation: 0.8,
                 brightness: 1
             }, {
                 hue: hue(cDir),
-                saturation: 1,
+                saturation: 0.8,
                 brightness: 1
             }]
         },
@@ -114,6 +113,11 @@ export class Robot {
     }
 
     goHome() {
+        // This is not very clever, but it seems to at least terminate and I conjecture that it finds
+        // a shortest way to close the loop when n is prime.
+        // For non-prime n, the "all counts equal" criteria is not sufficient: consider n = 4, LRLLLRL.
+        // The counts are now [1, 3, 1, 3], which is a vanishing sum of 4th roots of unity. Detecting those
+        // in general might be feasible, but finding the shortest path around the n-gon that ends up at one is another story...
         let l = this.mod(this.heading_ - 1), r = this.heading_;
         const base = this.counts[r];
         for (let i = 0; i < this.n/2; i++) {

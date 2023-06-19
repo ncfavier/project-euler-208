@@ -3,7 +3,6 @@
 
 var gulp    = require('gulp');                  // Gulp, of course
 var del     = require('del');                   // For deleting files
-var ghPages = require('gulp-gh-pages');         // Publish to a gh-pages branch
 var connect = require('gulp-connect');          // Run a dev server
 
 // Nuke the /dist folder
@@ -40,12 +39,6 @@ gulp.task('server', function() {
     return connect.server({
         root: 'dist'
     });
-});
-
-// Deploy the /dist folder to the gh-pages branch of the working repo
-gulp.task('deploy', function() {
-    return gulp.src('./dist/**/*')
-        .pipe(ghPages());
 });
 
 // Just compile the site into /dist
